@@ -175,6 +175,12 @@ section {
     align-items: center;
 }
 
+/* Project 2 Web Layout Adjustment Class */
+.hero-grid.layout-web-view {
+    grid-template-columns: 1.2fr 1fr;
+}
+
+/* --- UNCHANGED MOBILE STYLES --- */
 .hero-phone {
     display: flex;
     justify-content: center;
@@ -202,6 +208,75 @@ section {
     0%, 100% { transform: translateY(0); }
     50%      { transform: translateY(-12px); }
 }
+
+/* --- ADDED WEB ONLY HERO STYLES --- */
+.hero-browser-mockup {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.browser-window-frame {
+    width: 100%;
+    background: var(--prj-surface);
+    border: 1px solid var(--prj-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    animation: browserFloat 6s ease-in-out infinite;
+}
+
+.browser-top-bar {
+    background: var(--prj-bg);
+    border-bottom: 1px solid var(--prj-border);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.browser-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.browser-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.browser-dots .dot.red { background: #FF5F56; }
+.browser-dots .dot.yellow { background: #FFBD2E; }
+.browser-dots .dot.green { background: #27C93F; }
+
+.browser-address-field {
+    background: var(--prj-surface);
+    border: 1px solid var(--prj-border);
+    border-radius: 6px;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    color: var(--prj-muted);
+    font-family: monospace;
+    flex-grow: 1;
+    max-width: 380px;
+}
+
+.browser-window-frame img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+}
+
+@keyframes browserFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+
 
 .project-tag {
     display: inline-block;
@@ -412,6 +487,13 @@ section {
     align-items: center;
 }
 
+/* Project 2 Web Layout Adjustment Class */
+.showcase-container-grid.layout-web-slider {
+    grid-template-columns: 240px 1.5fr 1fr 100px;
+    gap: 40px;
+    align-items: center;
+}
+
 /* Left Nav List Elements */
 .screens-nav-list {
     display: flex;
@@ -466,7 +548,7 @@ section {
     box-shadow: 0 0 0 4px var(--prj-accent-bg);
 }
 
-/* Device Viewport - Fixes black box issue by providing clear sizing bounds */
+/* --- UNCHANGED MOBILE SLIDER FRAME --- */
 .phone-center-viewport {
     display: flex;
     justify-content: center;
@@ -491,6 +573,13 @@ section {
     object-fit: cover;
     display: block;
 }
+
+/* --- ADDED WEB ONLY SLIDER FRAME --- */
+.web-center-viewport {
+    width: 100%;
+    display: block;
+}
+
 
 /* Description Text Fields Block */
 .screen-description-pane h3 {
@@ -582,6 +671,13 @@ section {
     transition: all 0.3s ease;
 }
 
+/* --- ADDED WEB ONLY SLIDER TRACK THUMBS --- */
+.web-track-rail .track-preview-thumb {
+    width: 80px;
+    height: 50px;
+    border-radius: 6px;
+}
+
 .track-preview-thumb img {
     width: 100%;
     height: 100%;
@@ -660,7 +756,13 @@ button[class*="dark"],
 @media (max-width: 1200px) {
     .summary-capsule-row { grid-template-columns: repeat(3, 1fr); }
     .summary-item:not(:last-child)::after { display: none; }
-    .showcase-container-grid { grid-template-columns: 1fr; gap: 40px; }
+    
+    .showcase-container-grid,
+    .showcase-container-grid.layout-web-slider { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+    }
+    
     .screens-nav-list, .vertical-scroll-preview-track { display: none; }
     .phone-center-viewport, .screen-description-pane { text-align: center; margin: 0 auto; }
     .bullet-point { justify-content: center; }
@@ -669,7 +771,12 @@ button[class*="dark"],
 }
 
 @media (max-width: 992px) {
-    .hero-grid, .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-grid, 
+    .hero-grid.layout-web-view,
+    .overview-grid { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+    }
     .hero-content-pane, .overview-text { text-align: center; }
     .hero-tech-row, .hero-cta-buttons { justify-content: center; }
     .hero-content-pane p { margin-left: auto; margin-right: auto; }

@@ -3,7 +3,7 @@
                 File: js/project-loader.js
 =========================================================*/
 
-// 1. Unified Multidimensional Repository Data Matrix for All 4 Projects
+// 1. Unified Multidimensional Repository Data Matrix for All Projects
 const masterPortfolioDatabase = {
     movewise: [
         {
@@ -37,36 +37,35 @@ const masterPortfolioDatabase = {
             bullets: ["Live mobile camera vector coordinate overlay", "Dynamic angle computation tracking logs lines", "Immediate audio-visual error alert feedback", "Precision rep calibration analytics counters"]
         }
     ],
-    doughstory: [
+    // Updated key to match your web project data attribute, using web asset extensions
+    "doughstory-web": [
         {
-            title: "Welcome Screen",
-            desc: "Immersive landing flow designed with macro imagery to pull users into the gourmet bakery interface immediately.",
-            img: "../assets/images/doughstory_welcome.png",
-            bullets: ["High-definition background integration", "Fluid loading sequence presentation", "Clean exploration shortcuts triggers", "Premium typography tracking metrics"]
+            title: "First Layout (Splash)",
+            desc: "A widescreen visual experience using parallax hero properties to express bakery craftsmanship and capture food delivery leads.",
+            img: "../assets/images/landing.png",
+            url: "www.doughstory.com/welcome",
+            bullets: ["Full-bleed vector photography integration", "Fluid CSS typographic scale for high resolution displays", "Prominent 'Menu' primary tracking button", "Optimized layout weights for instant page load speed"]
         },
         {
-            title: "Menu Catalog",
-            desc: "Stunning catalog display highlighting real-time pricing indicators and micro-interactions components.",
-            img: "../assets/images/doughstory_menu.png",
-            bullets: ["Dynamic product row filters sorting", "Parallax image scrolling feedback loops", "Interactive nutritional layout indexes", "Smooth tap-to-expand details modal cards"]
+            title: "Pick Donut Page",
+            desc: "Highly Pick Donut Selection Screen.",
+            img: "../assets/images/selection.png",
+            url: "www.doughstory.com/menu",
+            bullets: [ "Filters for Different type of Donuts","Responsive grid layout for high resolution displays", "Instant add-to-cart item selection feedback"]
         },
         {
-            title: "Item Selection",
-            desc: "Highly tailored customizable item summary board designed for customized menu processing streams.",
-            img: "../assets/images/doughstory_details.png",
-            bullets: ["Real-time volume scaling modifiers buttons", "Dynamic secondary ingredient check selectors", "Interactive allergy warning indicators alerts", "Live order cost-subtotal counter logs"]
+            title: "Cart Review Panel",
+            desc: "Premium cart diplay.",
+            img: "../assets/images/cart.png",
+            url: "www.doughstory.com/cart",
+            bullets: ["Slide-to-delete item controls mapping", "Live order cost-subtotal counter logs", "Instant click-to-pay authorization "]
         },
         {
-            title: "Shopping Cart",
-            desc: "Premium check-out tray container designed to simplify e-commerce processing pathways layers.",
-            img: "../assets/images/doughstory_cart.png",
-            bullets: ["Slide-to-delete item gesture controls mapping", "Promo coupon voucher code testing fields", "Transparent taxes delivery calculation matrices", "Instant click-to-pay authorization wrappers"]
-        },
-        {
-            title: "Order Tracking",
-            desc: "Live processing milestone pipeline monitoring screen displaying delivery routes tracking indicators.",
-            img: "../assets/images/doughstory_tracking.png",
-            bullets: ["Interactive progress tracker step bar timeline", "Live delivery courier driver text message shortcut", "Estimated arrival time countdown timers", "Haptic tap feedback completion statuses updates"]
+            title: "Checkout Layout",
+            desc: "Live processing payment module .",
+            img: "../assets/images/payment.png",
+            url: "www.doughstory.com/checkout",
+            bullets: [ "Secure Stripe payment gateway integration", "Real-time order confirmation feedback"]
         }
     ],
     deathnote: [
@@ -76,7 +75,6 @@ const masterPortfolioDatabase = {
             img: "../assets/images/deathnote_intro.png",
             bullets: ["Custom gothic style typography elements", "Glowing red atmospheric vignette shadows", "Smooth scroll entry fade transitions", "Sleek immersive audio backing configuration"]
         }
-        // Core items configurations stack for remaining screens goes here...
     ],
     cosmicspace: [
         {
@@ -85,7 +83,6 @@ const masterPortfolioDatabase = {
             img: "../assets/images/cosmic_portal.png",
             bullets: ["Sci-fi neon overlay mesh vector graphics", "3D planet position tracking matrices metrics", "Animated interactive telescope zoom widgets", "Advanced particle systems backdrop integrations"]
         }
-        // Core items configurations stack for remaining screens goes here...
     ]
 };
 
@@ -113,6 +110,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("main-slider-img").src = currentData.img;
         document.getElementById("main-screen-title").innerText = currentData.title;
         document.getElementById("main-screen-desc").innerText = currentData.desc;
+
+        // WEB RELATED FIX: Dynamically changes simulated browser URL if the element exists
+        const browserUrlBar = document.getElementById("main-browser-url");
+        if (browserUrlBar && currentData.url) {
+            browserUrlBar.innerText = currentData.url;
+        }
 
         // Clear and dynamically map checkboxes arrays indicators
         const bulletsContainer = document.getElementById("main-screen-bullets");
