@@ -1,0 +1,687 @@
+/*=========================================================
+                PREMIUM CASE STUDY DESIGN SYSTEM
+                File: css/project_style.css
+=========================================================*/
+
+:root {
+    --prj-bg: #FAFBFC;
+    --prj-surface: #FFFFFF;
+    --prj-text: #111827;
+    --prj-muted: #6B7280;
+    --prj-border: #E5E7EB;
+    --prj-accent: #4F8CFF;
+    --prj-accent-bg: rgba(79, 140, 255, 0.08);
+    --prj-shadow: 0 10px 40px rgba(40, 60, 120, 0.03);
+}
+
+[data-theme="dark"] {
+    --prj-bg: #0A0E1A;
+    --prj-surface: #121826;
+    --prj-text: #F3F4F6;
+    --prj-muted: #9CA3AF;
+    --prj-border: #1F293D;
+    --prj-accent-bg: rgba(79, 140, 255, 0.15);
+    --prj-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+body {
+    background: var(--prj-bg);
+    color: var(--prj-text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+    padding-bottom: 100px; /* Safety padding at page bottom */
+}
+
+/* Wrapper to isolate content and prevent text overlapping out of viewports */
+.container, 
+main,
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative; /* Isolates absolutely positioned child buttons */
+    box-sizing: border-box;
+}
+
+/*=========================================================
+            NAVBAR INTEGRATION & ALIGNMENT FIX
+=========================================================*/
+.navbar.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+    padding: 15px 24px;
+}
+
+/* Fixes the button spacing inside the navbar flex row */
+.back-portfolio-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: var(--prj-accent);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: var(--prj-accent-bg); /* Subtle pill shape to look intentional */
+    margin: 0; /* Clear the old margin-bottom override */
+    white-space: nowrap;
+}
+
+.back-portfolio-btn:hover {
+    transform: translateX(-4px);
+    background: rgba(79, 140, 255, 0.15);
+}
+
+/* Responsive clean-up: hide or move on very small screens if crowded */
+@media (max-width: 768px) {
+    .navbar.container {
+        flex-wrap: wrap;
+    }
+    .back-portfolio-btn {
+        order: 10; /* Pushes it below or to a clean flow slot on mobile mockups */
+        font-size: 0.85rem;
+    }
+}
+/*=========================================================
+          HERO CALL-TO-ACTION BUTTONS (DEMO / SOURCE)
+=========================================================*/
+.hero-cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap; /* Wraps cleanly into two lines on narrow mobile viewports */
+    margin-top: 24px;
+}
+
+/* Base button styles to ensure consistency */
+.hero-cta-buttons .primary-btn,
+.hero-cta-buttons .secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Live Demo Button styles */
+.hero-cta-buttons .primary-btn {
+    background: var(--prj-accent);
+    color: #FFFFFF !important;
+    border: 2px solid var(--prj-accent);
+    box-shadow: 0 10px 25px rgba(79, 140, 255, 0.25);
+}
+
+.hero-cta-buttons .primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(79, 140, 255, 0.4);
+    background: #3b7be6;
+    border-color: #3b7be6;
+}
+
+/* View Source Button styles */
+.hero-cta-buttons .secondary-btn {
+    background: transparent;
+    color: var(--prj-text) !important;
+    border: 2px solid var(--prj-border);
+}
+
+.hero-cta-buttons .secondary-btn:hover {
+    transform: translateY(-2px);
+    background: var(--prj-surface);
+    border-color: var(--prj-accent);
+    color: var(--prj-accent) !important;
+}
+
+/* Ensure buttons take equal full-width cleanly ONLY on tiny mobile viewports */
+@media (max-width: 480px) {
+    .hero-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    .hero-cta-buttons .primary-btn,
+    .hero-cta-buttons .secondary-btn {
+        width: 100%;
+    }
+}
+/*=========================================================
+                    CASE STUDY HERO
+=========================================================*/
+.project-hero {
+    padding: 140px 0 60px;
+    position: relative;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr; /* Reduced left frame column allocation */
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-phone {
+    display: flex;
+    justify-content: center;
+}
+
+.phone-main-frame {
+    width: 100%;
+    max-width: 280px; /* Reduced from 320px to prevent full screen takeover */
+    aspect-ratio: 9/19.5;
+    background: #000;
+    border: 12px solid #111827;
+    border-radius: 44px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+}
+
+.phone-main-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: phoneFloat 5s ease-in-out infinite;
+}
+
+@keyframes phoneFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+}
+
+.project-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--prj-accent-bg);
+    border: 1px solid rgba(79, 140, 255, 0.2);
+    border-radius: 999px;
+    color: var(--prj-accent);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+}
+
+.hero-content-pane h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem); /* Scaled down for tighter display */
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 10px;
+}
+
+.hero-content-pane h2 {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 600;
+    color: var(--prj-accent);
+    margin-bottom: 20px;
+}
+
+.hero-content-pane p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--prj-muted);
+    max-width: 620px;
+    margin-bottom: 35px;
+}
+
+.hero-tech-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.hero-tech-row span {
+    padding: 8px 16px;
+    background: var(--prj-surface);
+    border: 1px solid var(--prj-border);
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: var(--prj-shadow);
+}
+
+
+
+/*=========================================================
+                    SUMMARY CAPSULE ROW
+=========================================================*/
+.summary-capsule-row {
+    background: var(--prj-surface);
+    border: 1px solid var(--prj-border);
+    border-radius: 24px;
+    padding: 24px 30px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    box-shadow: var(--prj-shadow);
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+}
+
+.summary-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: var(--prj-border);
+}
+
+.summary-icon-box {
+    width: 44px;
+    height: 44px;
+    background: var(--prj-accent-bg);
+    color: var(--prj-accent);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.summary-info h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.summary-info span {
+    font-size: 0.8rem;
+    color: var(--prj-muted);
+}
+
+/*=========================================================
+                    OVERVIEW SECTION
+=========================================================*/
+.overview {
+    padding: 80px 0;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.overview-text .tag {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--prj-accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.overview-text h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.overview-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--prj-muted);
+}
+
+.features-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.feature-mini-card {
+    background: var(--prj-surface);
+    border: 1px solid var(--prj-border);
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: var(--prj-shadow);
+}
+
+.feature-mini-card .icon-box {
+    width: 44px;
+    height: 44px;
+    background: var(--prj-accent-bg);
+    color: var(--prj-accent);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.feature-mini-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.feature-mini-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--prj-muted);
+    margin: 0;
+}
+
+/*=========================================================
+                UI SHOWCASE APP SCREEN SLIDER
+=========================================================*/
+.app-showcase-section {
+    padding: 80px 0;
+    background: rgba(79, 140, 255, 0.01);
+    border-top: 1px solid var(--prj-border);
+    border-bottom: 1px solid var(--prj-border);
+}
+
+.showcase-container-grid {
+    display: grid;
+    grid-template-columns: 240px 300px 1fr 80px; /* Reduced to sit compactly inside screen */
+    gap: 40px;
+    align-items: center;
+}
+
+/* Left Nav List Elements */
+.screens-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+}
+
+.screens-nav-list::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    height: 85%;
+    width: 2px;
+    background: var(--prj-border);
+    z-index: 1;
+}
+
+.nav-item-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: var(--prj-muted);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.nav-item-row .num {
+    width: 10px;
+    height: 10px;
+    background: var(--prj-border);
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 0; 
+    transition: background 0.3s, transform 0.3s;
+}
+
+.nav-item-row.active {
+    color: var(--prj-accent);
+}
+
+.nav-item-row.active .num {
+    background: var(--prj-accent);
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px var(--prj-accent-bg);
+}
+
+/* Device Viewport - Fixes black box issue by providing clear sizing bounds */
+.phone-center-viewport {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px; /* Ensures dynamic mockup renders instead of flat collapse */
+}
+
+.phone-device-frame {
+    width: 260px; /* Fixed sizing prevents image blowout or blank scaling */
+    height: 530px;
+    background: #000;
+    border: 12px solid #111827;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.phone-device-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Description Text Fields Block */
+.screen-description-pane h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.screen-description-pane p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--prj-muted);
+    margin-bottom: 24px;
+}
+
+.bullets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bullet-point {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.bullet-point::before {
+    content: '✓';
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--prj-accent-bg);
+    color: var(--prj-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.slider-arrow-controls {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.ctrl-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--prj-surface);
+    border: 1px solid var(--prj-border);
+    color: var(--prj-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--prj-shadow);
+    transition: all 0.3s ease;
+}
+
+.ctrl-btn:hover {
+    background: var(--prj-accent);
+    color: white;
+    border-color: var(--prj-accent);
+}
+
+/* Right Track Column Panel View */
+.vertical-scroll-preview-track {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.track-preview-thumb {
+    width: 54px;
+    height: 95px;
+    border-radius: 10px;
+    border: 2px solid var(--prj-border);
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+
+.track-preview-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.track-preview-thumb.active {
+    opacity: 1;
+    border-color: var(--prj-accent);
+    transform: scale(1.04);
+}
+
+/*=========================================================
+                    KEY FEATURES ROW
+=========================================================*/
+.key-features {
+    padding: 80px 0 120px;
+    position: relative;
+    clear: both;
+}
+
+/* Crucial Fix: Moves items into secondary lines using grid wrapping auto-fit */
+.horizontal-features-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 24px !important;
+    width: 100%;
+}
+
+.feature-item-pill {
+    background: var(--prj-surface);
+    border: 1px solid var(--prj-border);
+    padding: 30px 20px !important; /* Enhanced internal padding */
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--prj-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.feature-item-pill:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.feature-item-pill .icon {
+    font-size: 2rem;
+}
+
+.feature-item-pill span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem !important;
+    line-height: 1.4;
+    color: var(--prj-text);
+}
+
+/* Fix for Dark Mode Toggle Overlap text bug */
+div[class*="dark"], 
+button[class*="dark"],
+.dark-mode-toggle {
+    position: relative !important;
+    margin-top: 40px !important;
+    clear: both !important;
+    z-index: 100;
+}
+
+/*=========================================================
+                    RESPONSIVE MEDIA QUERIES
+=========================================================*/
+@media (max-width: 1200px) {
+    .summary-capsule-row { grid-template-columns: repeat(3, 1fr); }
+    .summary-item:not(:last-child)::after { display: none; }
+    .showcase-container-grid { grid-template-columns: 1fr; gap: 40px; }
+    .screens-nav-list, .vertical-scroll-preview-track { display: none; }
+    .phone-center-viewport, .screen-description-pane { text-align: center; margin: 0 auto; }
+    .bullet-point { justify-content: center; }
+    .slider-arrow-controls { justify-content: center; }
+    .horizontal-features-row { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
+@media (max-width: 992px) {
+    .hero-grid, .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-content-pane, .overview-text { text-align: center; }
+    .hero-tech-row, .hero-cta-buttons { justify-content: center; }
+    .hero-content-pane p { margin-left: auto; margin-right: auto; }
+    .horizontal-features-row { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 680px) {
+    .summary-capsule-row { grid-template-columns: repeat(2, 1fr); }
+    .features-mini-grid { grid-template-columns: 1fr; }
+    .horizontal-features-row { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 480px) {
+    .summary-capsule-row { grid-template-columns: 1fr; }
+}

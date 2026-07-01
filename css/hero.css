@@ -1,0 +1,347 @@
+/*=========================================================
+                    GLOBAL VARIABLE FALLBACKS
+=========================================================*/
+:root {
+    --primary-color: #4f8cff;
+    --text-dark: #1e2229;
+    --text-light: #6b7280;
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/*=========================================================
+                        HERO
+=========================================================*/
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 120px;
+    overflow: visible;
+    position: relative;
+}
+
+/*=========================================================
+                        WRAPPER
+=========================================================*/
+.hero-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 80px;
+    width: 100%;
+}
+
+
+/*=========================================================
+            UNLEASHED HERO LEFT STYLING
+=========================================================*/
+
+/* Shimmer Badge Effect */
+.shimmer-badge {
+    background: linear-gradient(to right, #4f8cff 0%, #ad7cff 50%, #4f8cff 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: textShimmer 3s linear infinite;
+    font-weight: 700;
+}
+
+/* Premium Title & Name Gradient */
+.hero-title {
+    font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--text-dark);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #4f8cff 0%, #ad7cff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    position: relative;
+}
+
+/* Typing Text Colors & Blinking Cursor */
+.typing-text {
+    color: #4f8cff;
+    font-weight: 700;
+}
+
+.cursor {
+    color: #ad7cff;
+    animation: blink 0.8s infinite;
+    font-weight: 300;
+    margin-left: 4px;
+}
+
+/*=========================================================
+                PREMIUM BUTTONS STYLING
+=========================================================*/
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.primary-btn, .secondary-btn {
+    position: relative;
+    padding: 16px 32px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Glowing Primary Button */
+.primary-btn {
+    background: linear-gradient(135deg, #4f8cff, #ad7cff);
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(79, 140, 255, 0.25);
+}
+
+.primary-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, #ad7cff, #4f8cff);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(79, 140, 255, 0.4);
+}
+
+.primary-btn:hover::before {
+    opacity: 1;
+}
+
+/* Dynamic Animated Arrow inside Primary Button */
+.btn-icon {
+    transition: transform 0.3s ease;
+}
+.primary-btn:hover .btn-icon {
+    transform: translateX(5px);
+}
+
+/* Modern Glassmorphic Secondary Button */
+.secondary-btn {
+    color: var(--text-dark);
+    border: 1px solid rgba(79, 140, 255, 0.25);
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.secondary-btn:hover {
+    background: rgba(79, 140, 255, 0.08);
+    border-color: #4f8cff;
+    transform: translateY(-3px);
+}
+
+/*=========================================================
+                       ANIMATIONS
+=========================================================*/
+@keyframes textShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+/*=========================================================
+                        RIGHT (LOGO & THREEJS)
+=========================================================*/
+.hero-right {
+    position: relative;
+    height: 720px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#three-container {
+    position: absolute;
+    inset: 0;
+    border-radius: 40px;
+    z-index: 1;
+}
+
+/* Unified Logo Alignment to perfectly target center of the space canvas */
+.hero-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; /* slightly smaller for a core */
+    height: 80px;
+    border-radius: 50%;
+    /* Beautiful energetic gradient */
+    background: linear-gradient(135deg, #4f8cff, #ad7cff); 
+    box-shadow: 
+        0 0 40px rgba(79, 140, 255, 0.6),
+        0 0 80px rgba(173, 124, 255, 0.4);
+    z-index: 5;
+    animation: heroPulse 4s ease-in-out infinite;
+}
+
+/* Dashed Orbit Ring around the central logo node */
+.hero-logo::before {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    border: 1px dashed rgba(91, 130, 255, .35);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotateRing 35s linear infinite;
+    pointer-events: none;
+}
+
+.hero-logo span {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/*=========================================================
+                    PLANET CARDS
+=========================================================*/
+.planet-card {
+    position: absolute;
+    background: rgba(255, 255, 255, .75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 18px 22px;
+    box-shadow: var(--shadow-lg);
+    transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    z-index: 6;
+}
+
+.planet-card:hover {
+    transform: translateY(-10px) scale(1.04);
+}
+
+.planet-card h4 {
+    margin-bottom: 4px;
+    color: var(--text-dark);
+}
+
+.planet-card p {
+    font-size: .9rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* CARD POSITIONS */
+.cosmic { top: 60px; right: 20px; }
+.movewise { bottom: 90px; right: 40px; }
+.doughstory { left: 20px; top: 180px; }
+.deathnote { left: 50px; bottom: 120px; }
+
+/*=========================================================
+                    SCROLL INDICATOR
+=========================================================*/
+.scroll-indicator {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--text-light);
+    font-size: .95rem;
+}
+
+.scroll-indicator span {
+    width: 32px;
+    height: 54px;
+    border: 2px solid #d8dbe2;
+    border-radius: 999px;
+    position: relative;
+}
+
+.scroll-indicator span::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    animation: scrollMouse 2s infinite;
+}
+
+/*=========================================================
+                GLOBAL TIMELINE ANIMATIONS
+=========================================================*/
+@keyframes scrollMouse {
+    0% { opacity: 0; top: 10px; }
+    40% { opacity: 1; }
+    100% { opacity: 0; top: 34px; }
+}
+
+@keyframes heroPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 40px rgba(91,130,255,.18), 0 15px 35px rgba(0,0,0,.08);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.06);
+        box-shadow: 0 0 60px rgba(91,130,255,.35), 0 15px 35px rgba(0,0,0,.12);
+    }
+}
+
+
+/*=========================================================
+      🌟 NEW: EXPLICIT DARK THEME BLUEPRINT MODIFICATIONS
+=========================================================*/
+[data-theme="dark"] {
+    /* 1. Global Variable Variable Shifts */
+    --text-dark: #f3f4f6;   /* Forces title font to cleanly flip to bright off-white */
+    --text-light: #9ca3af;  /* Forces description paragraph to turn to soft legible silver */
+
+    /* 2. Glassmorphic Card Swaps */
+    & .planet-card {
+        background: rgba(19, 27, 46, 0.8) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* 3. Secondary Glass Button Inverse */
+    & .secondary-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.15);
+        color: #f3f4f6;
+    }
+
+    & .secondary-btn:hover {
+        background: rgba(79, 140, 255, 0.15);
+        border-color: #4f8cff;
+    }
+
+    /* 4. Mouse Scroll Controller Wheel Boundary Mute */
+    & .scroll-indicator span {
+        border-color: #374151;
+    }
+}

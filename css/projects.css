@@ -1,0 +1,471 @@
+/*=========================================================
+                FEATURED PROJECTS (UPDATED)
+=========================================================*/
+
+#featured-projects{
+    padding:150px 0;
+    position:relative;
+    background: linear-gradient(180deg, #F9FBFF 0%, #F5F8FF 100%);
+    overflow:hidden;
+}
+
+#featured-projects::before{
+    content:"";
+    position:absolute;
+    top:-150px;
+    left:-120px;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:rgba(90,140,255,.08);
+    filter:blur(90px);
+}
+
+#featured-projects::after{
+    content:"";
+    position:absolute;
+    bottom:-160px;
+    right:-100px;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:rgba(170,120,255,.08);
+    filter:blur(100px);
+}
+
+/* 2 cards per row on desktop layout */
+.homepage-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.project-card{
+    position:relative;
+    overflow:hidden;
+    padding:30px; 
+    border-radius:28px; 
+    background:rgba(255,255,255,.58);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:
+    0 20px 50px rgba(40,60,120,.06),
+    0 10px 20px rgba(0,0,0,.03),
+    inset 0 1px 0 rgba(255,255,255,.9);
+    transition:.45s ease;
+    perspective:1200px;
+}
+
+/* Changed layout from horizontal grid row to vertical column flow */
+.project-card-inner{
+    display: flex;
+    flex-direction: column; 
+    gap: 25px; 
+    align-items: flex-start;
+    position:relative;
+    z-index:2;
+    transform-style:preserve-3d;
+    transition:transform .25s ease;
+}
+
+.project-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at top left, rgba(95,145,255,.18), transparent 45%),
+    radial-gradient(circle at bottom right, rgba(165,120,255,.15), transparent 45%);
+    opacity:0;
+    transition:.45s;
+    pointer-events:none;
+}
+
+/* ✨ BORDER SHINE ANIMATION */
+.project-card::after{
+    content:"";
+    position:absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.6),
+        transparent
+    );
+    transform: skewX(-25deg);
+    opacity: 0;
+    transition: left 0.65s ease-in-out, opacity 0.3s;
+    pointer-events: none;
+}
+
+.project-card:hover::after{
+    left: 150%;
+    opacity: 1;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+    border-color: rgba(93, 124, 255, 0.6); 
+    box-shadow:
+    0 35px 60px rgba(70,90,180,.12),
+    0 15px 30px rgba(0,0,0,.06),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+
+.project-card:hover::before{
+    opacity:1;
+}
+
+/* Safe legacy cleanups for old layout structures */
+.project-card.reverse .project-card-inner {
+    flex-direction: column;
+}
+.project-card.reverse .project-image,
+.project-card.reverse .project-info {
+    order: unset;
+}
+
+/* Fixes the harsh white background block issue on project images */
+.project-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 220px; /* Forces uniform height on all cards */
+    background: rgba(255, 255, 255, 0.4); /* Soft background to blend raw graphics */
+    border-radius: 20px; /* Smooth rounded block matching the card theme */
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Keeps your logos proportional without stretching */
+    padding: 20px; /* Prevents logos from hitting the borders edge-to-edge */
+    mix-blend-mode: multiply; /* Optional: Blends white logo backgrounds seamlessly into the card background */
+    animation: floatPhone 5s ease-in-out infinite;
+}
+
+
+
+@keyframes floatPhone{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-12px); }
+    100%{ transform:translateY(0); }
+}
+
+.project-card:hover img{
+    transform:
+    translateY(-10px)
+    scale(1.02);
+}
+
+.project-number{
+    font-size:.82rem;
+    letter-spacing:4px;
+    font-weight:700;
+    text-transform:uppercase;
+    color:#6D7AFF;
+}
+
+.project-info {
+    width: 100%;
+}
+
+.project-info h3{
+    margin:12px 0;
+    font-size:1.6rem; 
+}
+
+.project-info p{
+    margin-bottom:20px;
+    line-height:1.6;
+    font-size: 0.95rem;
+}
+
+.tech-stack{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:25px;
+}
+
+.tech-stack span{
+    padding:6px 14px; 
+    font-size: 0.85rem;
+    border-radius:999px;
+    background:rgba(255,255,255,.7);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.85);
+    font-weight:600;
+    color:var(--primary-color);
+    transition:.3s;
+}
+
+.tech-stack span:hover{
+    transform:translateY(-3px);
+    background:white;
+}
+
+/*=========================================================
+                RESPONSIVENESS & MEDIA QUERIES
+=========================================================*/
+
+/* Responsive downscale to 1 card layout line on smaller tablet/mobile viewports */
+@media(max-width: 900px){
+    .homepage-projects-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+@media(max-width:1000px){
+    .project-info p{
+        margin: 0 0 25px 0 !important; 
+    }
+    .tech-stack{
+        justify-content: flex-start !important; 
+    }
+    .reveal-card{
+        opacity:0;
+        transform:translateY(80px);
+        transition: opacity .8s ease, transform .8s ease;
+    }
+    .reveal-card.show{
+        opacity:1;
+        transform:translateY(0);
+    }
+    .secondary-btn{
+        position:relative;
+        z-index:100;
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+        padding:14px 28px;
+        border-radius:999px;
+        background:linear-gradient(135deg, #5D7CFF, #7B61FF);
+        color:white;
+        font-weight:600;
+        text-decoration:none;
+        transition: transform .25s, box-shadow .25s;
+    }
+    .secondary-btn:active{
+        transform:scale(.95);
+        box-shadow: 0 10px 25px rgba(90,120,255,.25);
+    }
+    .secondary-btn:hover{
+        transform:translateY(-4px);
+        box-shadow: 0 18px 35px rgba(90,120,255,.35);
+    }
+    .secondary-btn span{
+        transition:.3s;
+    }
+    .secondary-btn:hover span{
+        transform:translateX(6px);
+    }
+}
+
+/*=========================================================
+        RESTORED: PROJECT INTERIOR DETAILS PAGE
+=========================================================*/
+body{
+    margin:0;
+    font-family:'Inter', sans-serif;
+    background: var(--bg-color); 
+    color: var(--text-dark);     
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+.project-nav{
+    padding:30px 0;
+}
+
+.back-btn{
+    text-decoration:none;
+    font-weight:600;
+    color:#5A7BFF;
+}
+
+.project-hero{
+    padding:80px 0 120px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 520px;
+    gap:80px;
+    align-items:center;
+}
+
+.project-tag{
+    display:inline-block;
+    padding:10px 18px;
+    background:#EEF5FF;
+    border-radius:999px;
+    color:#5A7BFF;
+    font-weight:600;
+    margin-bottom:25px;
+}
+
+.hero-content h1{
+    font-size:4.5rem;
+    margin:0 0 20px;
+    color: var(--text-dark);
+}
+
+.hero-content p{
+    font-size:1.1rem;
+    line-height:1.9;
+    max-width:560px;
+    color: var(--text-light);
+}
+
+.hero-tech{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:35px;
+}
+
+.hero-tech span{
+    padding:12px 20px;
+    background: var(--surface-color); 
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    border-radius:999px;
+    box-shadow:0 10px 25px rgba(0,0,0,.04);
+}
+
+.hero-phone{
+    display:flex;
+    justify-content:center;
+}
+
+.hero-phone img{
+    width:330px;
+    filter:drop-shadow(0 35px 60px rgba(0,0,0,.15));
+    animation:phoneFloat 5s ease-in-out infinite;
+}
+
+@keyframes phoneFloat{
+    0%{ transform:translateY(0); }
+    50%{ transform:translateY(-18px); }
+    100%{ transform:translateY(0); }
+}
+
+.overview{
+    padding-bottom:120px;
+}
+
+.overview-card{
+    background: rgba(255,255,255,.72);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius:32px;
+    padding:60px;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:60px;
+    box-shadow:0 20px 45px rgba(0,0,0,.04);
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    text-align:center;
+    gap:25px;
+}
+
+.stats h2{
+    font-size:2.6rem;
+    margin:0;
+    color:#5A7BFF;
+}
+
+.stats span{
+    color: var(--text-light);
+}
+
+/*=========================================================
+        RESTORED: EXPLICIT DARK THEME BLUEPRINT OVERWRITES
+=========================================================*/
+[data-theme="dark"] #featured-projects {
+    background: linear-gradient(180deg, #0A0E1A 0%, #0F1526 100%) !important;
+}
+
+[data-theme="dark"] .project-card {
+    background: rgba(19, 27, 46, 0.75) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .project-info h3 {
+    color: #f3f4f6 !important;
+}
+
+[data-theme="dark"] .project-info p {
+    color: #9ca3af !important;
+}
+
+[data-theme="dark"] .tech-stack span {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #4f8cff !important;
+}
+
+[data-theme="dark"] .tech-stack span:hover {
+    background: rgba(79, 140, 255, 0.15) !important;
+}
+
+[data-theme="dark"] .project-tag {
+    background: #1e2942 !important;
+    color: #4f8cff !important;
+}
+
+[data-theme="dark"] .overview-card {
+    background: rgba(19, 27, 46, 0.8) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+/* Ensure mix-blend-mode falls back nicely on dark layouts */
+[data-theme="dark"] .project-image {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+[data-theme="dark"] .project-image img {
+    mix-blend-mode: normal; /* Disables multiply overlay logic if image colors inversion isn't required */
+}
+.projects-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.coming-soon-text {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #6D7AFF; /* Matches your brand dynamic primary accent color */
+    letter-spacing: 0.5px;
+    opacity: 0.85;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.02); }
+}
+
+/* Dark mode support for Coming Soon text */
+[data-theme="dark"] .coming-soon-text {
+    color: #4f8cff !important;
+}

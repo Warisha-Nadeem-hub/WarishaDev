@@ -1,0 +1,322 @@
+/*=========================================================
+                        CONTACT LAYOUT
+=========================================================*/
+#contact {
+    padding: 120px 0 150px 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Ambient Purple & Blue Aurora Backdrops */
+.contact-bg-glow {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(173,124,255,0.15) 0%, rgba(79,140,255,0.05) 70%, transparent 100%);
+    bottom: -50px;
+    right: -100px;
+    z-index: -1;
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 540px;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Typography elements */
+.contact-tagline {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--primary-color, #4f8cff);
+    margin-bottom: 14px;
+}
+
+.contact-title {
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text-dark, #1e2229);
+    margin-bottom: 24px;
+}
+
+.contact-desc {
+    max-width: 480px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-light, #6b7280);
+    margin-bottom: 40px;
+}
+
+/*=========================================================
+                RESUME ACTIONS COMPONENT
+=========================================================*/
+.resume-container {
+    display: inline-block;
+}
+
+.resume-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(79, 140, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 14px 28px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+.resume-icon-box {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #4f8cff, #ad7cff);
+    color: white;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 16px rgba(79, 140, 255, 0.2);
+}
+
+.resume-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.resume-text .label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark, #1e2229);
+    transition: color 0.3s ease;
+}
+
+.resume-text .file-info {
+    font-size: 0.8rem;
+    color: var(--text-light, #6b7280);
+    margin-top: 2px;
+}
+
+/* Interactive Hover States for Resume Download Link */
+.resume-btn:hover {
+    transform: translateY(-4px);
+    background: #ffffff;
+    border-color: var(--primary-color, #4f8cff);
+    box-shadow: 0 15px 35px rgba(79, 140, 255, 0.12);
+}
+
+.resume-btn:hover .resume-icon-box {
+    transform: translateY(2px);
+}
+
+.resume-btn:hover .label {
+    color: var(--primary-color, #4f8cff);
+}
+
+/*=========================================================
+                GLOWING FORM & INPUTS
+=========================================================*/
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 50px;
+    border-radius: 36px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0,0,0,0.01);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(173, 124, 255, 0.3);
+    box-shadow: 0 40px 70px rgba(79, 140, 255, 0.08);
+}
+
+.glass-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.glass-card input,
+.glass-card textarea {
+    width: 100%;
+    padding: 18px 22px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    font-size: 1rem;
+    color: var(--text-dark, #1e2229);
+    background: rgba(248, 250, 252, 0.6);
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Hidden decorative line that sweeps across field bases on focus */
+.focus-line {
+    position: absolute;
+    bottom: 0; left: 50%; width: 0; height: 2px;
+    background: linear-gradient(to right, #4f8cff, #ad7cff);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 99px;
+    pointer-events: none;
+}
+
+.glass-card input:focus ~ .focus-line,
+.glass-card textarea:focus ~ .focus-line {
+    width: 80%;
+    left: 10%;
+}
+
+.glass-card input:focus,
+.glass-card textarea:focus {
+    background: #ffffff;
+    border-color: rgba(79, 140, 255, 0.4);
+    box-shadow: 0 10px 25px rgba(79, 140, 255, 0.05);
+}
+
+.glass-card textarea {
+    height: 160px;
+    resize: none;
+}
+
+/*=========================================================
+                PREMIUM GLOWING SUBMIT BUTTON
+=========================================================*/
+.submit-glow-btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    padding: 18px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #4f8cff, #ad7cff);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    box-shadow: 0 10px 25px rgba(79, 140, 255, 0.3);
+}
+
+.send-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Interactive Hover States for Form Processing Triggers */
+.submit-glow-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(173, 124, 255, 0.45);
+}
+
+.submit-glow-btn:hover .send-icon {
+    transform: translate(4px, -4px) scale(1.05);
+}
+
+.submit-glow-btn:active {
+    transform: translateY(-1px);
+}
+
+/*=========================================================
+                        RESPONSIVE
+=========================================================*/
+@media (max-width: 1024px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .contact-left {
+        text-align: center;
+    }
+    .contact-desc {
+        margin: 0 auto 30px auto;
+    }
+    .resume-container {
+        margin: 0 auto;
+    }
+    .glass-card {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    #contact {
+        padding: 80px 0 100px 0;
+    }
+    .glass-card {
+        padding: 30px 20px;
+        border-radius: 24px;
+    }
+    .resume-btn {
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+}
+
+/*=========================================================
+      🌟 NEW: EXPLICIT DARK THEME BLUEPRINT MODIFICATIONS
+=========================================================*/
+/* 1. Resume Container Glassmorphism Inverse */
+[data-theme="dark"] .resume-btn {
+    background: rgba(19, 27, 46, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .resume-btn:hover {
+    background: #131b2e;
+    border-color: var(--primary-color, #4f8cff);
+    box-shadow: 0 15px 35px rgba(79, 140, 255, 0.25);
+}
+
+/* 2. Form Card Component Core Background Shift */
+[data-theme="dark"] .glass-card {
+    background: rgba(19, 27, 46, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .glass-card:hover {
+    border-color: rgba(173, 124, 255, 0.25);
+    box-shadow: 0 40px 70px rgba(79, 140, 255, 0.15);
+}
+
+/* 3. Text Fields and Textareas Input Boxes Styling */
+[data-theme="dark"] .glass-card input,
+[data-theme="dark"] .glass-card textarea {
+    background: rgba(11, 15, 25, 0.6);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .glass-card input:focus,
+[data-theme="dark"] .glass-card textarea:focus {
+    background: #0b0f19;
+    border-color: rgba(79, 140, 255, 0.5);
+    box-shadow: 0 10px 25px rgba(79, 140, 255, 0.15);
+}
+
+/* 4. Ambient Aura Backdrops Brightness Tuning */
+[data-theme="dark"] .contact-bg-glow {
+    background: radial-gradient(circle, rgba(173,124,255,0.08) 0%, rgba(79,140,255,0.03) 70%, transparent 100%);
+}
