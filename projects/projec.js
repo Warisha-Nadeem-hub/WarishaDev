@@ -68,12 +68,50 @@ const masterPortfolioDatabase = {
             bullets: [ "Secure Stripe payment gateway integration", "Real-time order confirmation feedback"]
         }
     ],
-    deathnote: [
+"deathnote": [
         {
-            title: "Anime Onboarding",
-            desc: "Dark stylized intro layout capturing look and feel of the legendary series seamlessly.",
-            img: "../assets/images/deathnote_intro.png",
-            bullets: ["Custom gothic style typography elements", "Glowing red atmospheric vignette shadows", "Smooth scroll entry fade transitions", "Sleek immersive audio backing configuration"]
+            title: "System Initialization",
+            desc: "Gateway entrance using gothic typography overlays. Immersive atmospheric landing layer engineered to anchor the dark psychological tension immediately.",
+            img: "../assets/images/DN_landing.png", 
+            bullets: [
+                "Custom serif gothic typography layout elements",
+                "Glowing red atmospheric vignette shadow borders",
+                "Smooth scroll entry fade sequence handlers",
+                "Sleek immersive audio backing configuration"
+            ]
+        },
+        {
+            title: "Intelligence Network",
+            desc: "A cosmic starfield matrix where major character profiles (Kira, L, Misa, Ryuk) hover as hidden celestial nodes, opening detailed glassmorphic intelligence dossiers upon interface interaction.",
+            img: "../assets/images/network.png",
+            bullets: [
+                "Interactive hover celestial nodes map arrays",
+                "Glassmorphic intelligence container layout overlays",
+                "Character dossiers tracking profiles modules",
+                "Dynamic backdrop canvas glow particle animations"
+            ]
+        },
+        {
+            title: "The 3D Sanctuary",
+            desc: "Seamless transition into a localized room mesh where a procedurally constructed 3D notebook rests in a real-time lighting container.",
+            img: "../assets/images/name.png",
+            bullets: [
+                "Real-time dynamic light mapping projections matrix",
+                "Procedural 3D model orientation viewport constraints",
+                "High-fidelity vector shadow casting pipelines",
+                "Interactive page-turning gesture triggers"
+            ]
+        },
+        {
+            title: "Execution Sequence",
+            desc: "A terminal execution prompt linked to a biometric heart-rate monitor countdown, culminating in an intentional hardware-glitch breakdown effect upon completion.",
+            img: "../assets/images/eliminated.png",
+            bullets: [
+                "Biometric simulation countdown track intervals",
+                "Custom hardware text glitch animation frames",
+                "Heart failure verification sequence flags",
+                "Automated global layout hardware reset fallback loops"
+            ]
         }
     ],
     cosmicspace: [

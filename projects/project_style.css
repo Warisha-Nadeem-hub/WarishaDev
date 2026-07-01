@@ -12,6 +12,7 @@
     --prj-accent: #4F8CFF;
     --prj-accent-bg: rgba(79, 140, 255, 0.08);
     --prj-shadow: 0 10px 40px rgba(40, 60, 120, 0.03);
+    --shine-gradient: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
 }
 
 [data-theme="dark"] {
@@ -22,6 +23,7 @@
     --prj-border: #1F293D;
     --prj-accent-bg: rgba(79, 140, 255, 0.15);
     --prj-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    --shine-gradient: linear-gradient(90deg, rgba(79, 140, 255, 0) 0%, rgba(79, 140, 255, 0.25) 50%, rgba(79, 140, 255, 0) 100%);
 }
 
 body {
@@ -31,17 +33,16 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
     transition: background 0.3s ease, color 0.3s ease;
-    padding-bottom: 100px; /* Safety padding at page bottom */
+    padding-bottom: 100px;
 }
 
-/* Wrapper to isolate content and prevent text overlapping out of viewports */
 .container, 
 main,
 section {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
-    position: relative; /* Isolates absolutely positioned child buttons */
+    position: relative;
     box-sizing: border-box;
 }
 
@@ -57,7 +58,30 @@ section {
     padding: 15px 24px;
 }
 
-/* Fixes the button spacing inside the navbar flex row */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--prj-text);
+}
+
+.navbar-project-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--prj-muted);
+    padding-left: 12px;
+    border-left: 2px solid var(--prj-border);
+    white-space: nowrap;
+}
+
 .back-portfolio-btn {
     display: inline-flex;
     align-items: center;
@@ -70,8 +94,8 @@ section {
     transition: all 0.3s ease;
     padding: 6px 14px;
     border-radius: 8px;
-    background: var(--prj-accent-bg); /* Subtle pill shape to look intentional */
-    margin: 0; /* Clear the old margin-bottom override */
+    background: var(--prj-accent-bg);
+    margin: 0;
     white-space: nowrap;
 }
 
@@ -80,16 +104,6 @@ section {
     background: rgba(79, 140, 255, 0.15);
 }
 
-/* Responsive clean-up: hide or move on very small screens if crowded */
-@media (max-width: 768px) {
-    .navbar.container {
-        flex-wrap: wrap;
-    }
-    .back-portfolio-btn {
-        order: 10; /* Pushes it below or to a clean flow slot on mobile mockups */
-        font-size: 0.85rem;
-    }
-}
 /*=========================================================
           HERO CALL-TO-ACTION BUTTONS (DEMO / SOURCE)
 =========================================================*/
@@ -97,11 +111,10 @@ section {
     display: flex;
     align-items: center;
     gap: 16px;
-    flex-wrap: wrap; /* Wraps cleanly into two lines on narrow mobile viewports */
+    flex-wrap: wrap;
     margin-top: 24px;
 }
 
-/* Base button styles to ensure consistency */
 .hero-cta-buttons .primary-btn,
 .hero-cta-buttons .secondary-btn {
     display: inline-flex;
@@ -120,7 +133,6 @@ section {
     box-sizing: border-box;
 }
 
-/* Live Demo Button styles */
 .hero-cta-buttons .primary-btn {
     background: var(--prj-accent);
     color: #FFFFFF !important;
@@ -135,7 +147,6 @@ section {
     border-color: #3b7be6;
 }
 
-/* View Source Button styles */
 .hero-cta-buttons .secondary-btn {
     background: transparent;
     color: var(--prj-text) !important;
@@ -149,17 +160,6 @@ section {
     color: var(--prj-accent) !important;
 }
 
-/* Ensure buttons take equal full-width cleanly ONLY on tiny mobile viewports */
-@media (max-width: 480px) {
-    .hero-cta-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-    .hero-cta-buttons .primary-btn,
-    .hero-cta-buttons .secondary-btn {
-        width: 100%;
-    }
-}
 /*=========================================================
                     CASE STUDY HERO
 =========================================================*/
@@ -170,17 +170,15 @@ section {
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 340px 1fr; /* Reduced left frame column allocation */
+    grid-template-columns: 340px 1fr;
     gap: 60px;
     align-items: center;
 }
 
-/* WEB FIX: Layout configuration class overrides mobile frame limitations */
 .hero-grid.layout-web-view {
-    grid-template-columns: 1.2fr 1fr !important;
+    grid-template-columns: 1.3fr 1fr !important;
 }
 
-/* --- UNCHANGED MOBILE STYLES --- */
 .hero-phone {
     display: flex;
     justify-content: center;
@@ -188,7 +186,7 @@ section {
 
 .phone-main-frame {
     width: 100%;
-    max-width: 280px; /* Reduced from 320px to prevent full screen takeover */
+    max-width: 280px;
     aspect-ratio: 9/19.5;
     background: #000;
     border: 12px solid #111827;
@@ -209,12 +207,11 @@ section {
     50%      { transform: translateY(-12px); }
 }
 
-/* --- ADDED WEB ONLY HERO STYLES --- */
 .hero-browser-mockup {
     display: flex;
     justify-content: center;
     width: 100%;
-    min-width: 0; /* Critical deployment fix prevents container blowout */
+    min-width: 0;
 }
 
 .browser-window-frame {
@@ -224,7 +221,7 @@ section {
     border: 1px solid var(--prj-border);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+    box-shadow: var(--prj-shadow);
     display: flex;
     flex-direction: column;
     animation: browserFloat 6s ease-in-out infinite;
@@ -270,11 +267,15 @@ section {
     white-space: nowrap;
 }
 
+.browser-image-container {
+    width: 100%;
+    position: relative;
+    background: var(--prj-bg);
+}
+
 .browser-window-frame img {
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
     display: block;
 }
 
@@ -300,7 +301,7 @@ section {
 
 .hero-content-pane h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.2rem, 4vw, 3.5rem); /* Scaled down for tighter display */
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
     font-weight: 800;
     line-height: 1.1;
     margin: 0 0 10px;
@@ -444,6 +445,30 @@ section {
     padding: 24px;
     border-radius: 20px;
     box-shadow: var(--prj-shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+.feature-mini-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -150%; width: 50%; height: 100%;
+    background: var(--shine-gradient);
+    transform: skewX(-25deg);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.feature-mini-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--prj-accent);
+    box-shadow: 0 20px 40px rgba(79, 140, 255, 0.08);
+}
+
+.feature-mini-card:hover::before {
+    left: 250%;
+    transition: left 0.85s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .feature-mini-card .icon-box {
@@ -485,17 +510,16 @@ section {
 
 .showcase-container-grid {
     display: grid;
-    grid-template-columns: 240px 300px 1fr 80px; /* Reduced to sit compactly inside screen */
+    grid-template-columns: 240px 300px 1fr 80px;
     gap: 40px;
     align-items: center;
 }
 
-/* WEB FIX: Custom slider rail rules context for horizontal browser assets */
 .showcase-container-grid.layout-web-slider {
-    grid-template-columns: 220px 1.4fr 1fr 100px !important;
+    grid-template-columns: 200px 1.5fr 1fr 90px !important;
+    gap: 30px;
 }
 
-/* Left Nav List Elements */
 .screens-nav-list {
     display: flex;
     flex-direction: column;
@@ -549,16 +573,15 @@ section {
     box-shadow: 0 0 0 4px var(--prj-accent-bg);
 }
 
-/* --- UNCHANGED MOBILE SLIDER FRAME --- */
 .phone-center-viewport {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 500px; /* Ensures dynamic mockup renders instead of flat collapse */
+    min-height: 500px;
 }
 
 .phone-device-frame {
-    width: 260px; /* Fixed sizing prevents image blowout or blank scaling */
+    width: 260px;
     height: 530px;
     background: #000;
     border: 12px solid #111827;
@@ -575,18 +598,16 @@ section {
     display: block;
 }
 
-/* --- ADDED WEB ONLY SLIDER FRAME FIX --- */
 .web-center-viewport {
     width: 100%;
     display: block;
-    min-width: 0; /* Stops grid breakout on live platforms like GitHub */
+    min-width: 0;
 }
 
 .web-center-viewport .browser-window-frame img {
-    animation: none !important; /* Disables floating inside interactive track modules */
+    animation: none !important;
 }
 
-/* Description Text Fields Block */
 .screen-description-pane h3 {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.8rem;
@@ -658,7 +679,6 @@ section {
     border-color: var(--prj-accent);
 }
 
-/* Right Track Column Panel View */
 .vertical-scroll-preview-track {
     display: flex;
     flex-direction: column;
@@ -676,7 +696,6 @@ section {
     transition: all 0.3s ease;
 }
 
-/* --- ADDED WEB ONLY SLIDER TRACK THUMBS --- */
 .web-track-rail .track-preview-thumb {
     width: 80px;
     height: 50px;
@@ -704,7 +723,6 @@ section {
     clear: both;
 }
 
-/* Crucial Fix: Moves items into secondary lines using grid wrapping auto-fit */
 .horizontal-features-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
@@ -715,7 +733,7 @@ section {
 .feature-item-pill {
     background: var(--prj-surface);
     border: 1px solid var(--prj-border);
-    padding: 30px 20px !important; /* Enhanced internal padding */
+    padding: 30px 20px !important;
     border-radius: 20px;
     text-align: center;
     box-shadow: var(--prj-shadow);
@@ -724,17 +742,40 @@ section {
     align-items: center;
     justify-content: center;
     gap: 14px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
     box-sizing: border-box;
 }
 
+.feature-item-pill::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -150%; width: 50%; height: 100%;
+    background: var(--shine-gradient);
+    transform: skewX(-25deg);
+    pointer-events: none;
+    z-index: 2;
+}
+
 .feature-item-pill:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
+    border-color: var(--prj-accent);
+    box-shadow: 0 15px 35px rgba(79, 140, 255, 0.1);
+}
+
+.feature-item-pill:hover::before {
+    left: 250%;
+    transition: left 0.85s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .feature-item-pill .icon {
     font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-item-pill:hover .icon {
+    transform: scale(1.15);
 }
 
 .feature-item-pill span {
@@ -745,7 +786,6 @@ section {
     color: var(--prj-text);
 }
 
-/* Fix for Dark Mode Toggle Overlap text bug */
 div[class*="dark"], 
 button[class*="dark"],
 .dark-mode-toggle {
@@ -762,24 +802,26 @@ button[class*="dark"],
     .summary-capsule-row { grid-template-columns: repeat(3, 1fr); }
     .summary-item:not(:last-child)::after { display: none; }
     
-    .showcase-container-grid,
     .showcase-container-grid.layout-web-slider { 
-        grid-template-columns: 1fr; 
-        gap: 40px; 
+        grid-template-columns: 1fr !important; 
+        gap: 30px; 
     }
     
-    .screens-nav-list, .vertical-scroll-preview-track { display: none; }
-    .phone-center-viewport, .screen-description-pane { text-align: center; margin: 0 auto; }
+    .screens-nav-list, .vertical-scroll-preview-track { display: none !important; }
+    .web-center-viewport, .screen-description-pane { text-align: center; margin: 0 auto; max-width: 750px; }
     .bullet-point { justify-content: center; }
     .slider-arrow-controls { justify-content: center; }
     .horizontal-features-row { grid-template-columns: repeat(3, 1fr) !important; }
 }
 
 @media (max-width: 992px) {
+    .navbar.container { flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .logo-wrapper { width: 100%; justify-content: center; }
+    
     .hero-grid, 
     .hero-grid.layout-web-view,
     .overview-grid { 
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr !important; 
         gap: 40px; 
     }
     .hero-content-pane, .overview-text { text-align: center; }
@@ -789,11 +831,14 @@ button[class*="dark"],
 }
 
 @media (max-width: 680px) {
-    .summary-capsule-row { grid-template-columns: repeat(2, 1fr); }
+    .summary-capsule-row { grid-template-columns: repeat(2, 1fr); padding: 20px; }
     .features-mini-grid { grid-template-columns: 1fr; }
     .horizontal-features-row { grid-template-columns: 1fr !important; }
+    .navbar-project-title { display: none; }
 }
 
 @media (max-width: 480px) {
     .summary-capsule-row { grid-template-columns: 1fr; }
+    .hero-cta-buttons { flex-direction: column; width: 100%; }
+    .hero-cta-buttons .primary-btn, .hero-cta-buttons .secondary-btn { width: 100%; }
 }
