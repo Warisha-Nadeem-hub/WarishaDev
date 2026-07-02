@@ -104,7 +104,8 @@ html{
 
 body{
 
-    background:var(--bg-color);
+   /* background:var(--bg-color);*/
+   background: transparent;
 
     color:var(--text-dark);
 
@@ -570,4 +571,33 @@ p{
 
 [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
     background: #4F8CFF;
+}
+/*=========================================================
+        🌟 ADD TO THE BOTTOM OF MASTER STYLE.CSS
+=========================================================*/
+
+/* Responsive Typography Scale System for Mobile Screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.4rem !important; /* Prevents long project interior titles from breaking out */
+    }
+    h2 {
+        font-size: 1.8rem !important;
+    }
+    h3 {
+        font-size: 1.4rem !important;
+    }
+    
+    /* Responsive adjustment for internal page layouts */
+    .hero-grid, 
+    .overview-card {
+        grid-template-columns: 1fr !important; /* Drop multi-column detail wrappers to single stacks */
+        gap: 32px !important;
+        padding: 30px 20px !important;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr !important; /* Stack stats blocks cleanly */
+        gap: 20px;
+    }
 }

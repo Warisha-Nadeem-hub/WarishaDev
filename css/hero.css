@@ -9,34 +9,44 @@
 }
 
 /*=========================================================
-                        HERO
+                        HERO SECTION
 =========================================================*/
 #hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 120px;
-    overflow: visible;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/*=========================================================
+          STRUCTURE CONTAINER (ANCHORS THE LAYOUT)
+=========================================================*/
+/* Targets the combined element in your HTML to keep it bounded on widescreen */
+.container.hero-wrapper {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+    width: min(1200px, 90%) !important;
+    margin: 0 auto !important;
     position: relative;
 }
 
 /*=========================================================
-                        WRAPPER
+            TEXT, HEADINGS & SPACING (LEFT SIDE)
 =========================================================*/
-.hero-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 80px;
-    width: 100%;
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    z-index: 10;
 }
 
-
-/*=========================================================
-            UNLEASHED HERO LEFT STYLING
-=========================================================*/
-
-/* Shimmer Badge Effect */
 .shimmer-badge {
     background: linear-gradient(to right, #4f8cff 0%, #ad7cff 50%, #4f8cff 100%);
     background-size: 200% auto;
@@ -45,16 +55,28 @@
     background-clip: text;
     animation: textShimmer 3s linear infinite;
     font-weight: 700;
+    font-size: 1.05rem;
+    display: inline-block;
+    margin-bottom: 12px;
 }
 
-/* Premium Title & Name Gradient */
 .hero-title {
-    font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+    font-size: clamp(2.5rem, 4vw, 4rem);
     line-height: 1.2;
-    margin-bottom: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
     color: var(--text-dark);
     font-weight: 800;
     letter-spacing: -1px;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-top: 0;
+    margin-bottom: 36px;
+    max-width: 480px; /* Locks text column layout width */
 }
 
 .text-gradient {
@@ -63,10 +85,8 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: inline-block;
-    position: relative;
 }
 
-/* Typing Text Colors & Blinking Cursor */
 .typing-text {
     color: #4f8cff;
     font-weight: 700;
@@ -80,31 +100,30 @@
 }
 
 /*=========================================================
-                PREMIUM BUTTONS STYLING
+                BUTTONS LAYOUT
 =========================================================*/
 .hero-buttons {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     flex-wrap: wrap;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .primary-btn, .secondary-btn {
     position: relative;
-    padding: 16px 32px;
-    border-radius: 14px;
+    padding: 14px 28px;
+    border-radius: 12px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     overflow: hidden;
     z-index: 1;
 }
 
-/* Glowing Primary Button */
 .primary-btn {
     background: linear-gradient(135deg, #4f8cff, #ad7cff);
     color: #ffffff;
@@ -130,15 +149,14 @@
     opacity: 1;
 }
 
-/* Dynamic Animated Arrow inside Primary Button */
 .btn-icon {
     transition: transform 0.3s ease;
 }
+
 .primary-btn:hover .btn-icon {
-    transform: translateX(5px);
+    transform: translateX(4px);
 }
 
-/* Modern Glassmorphic Secondary Button */
 .secondary-btn {
     color: var(--text-dark);
     border: 1px solid rgba(79, 140, 255, 0.25);
@@ -150,6 +168,133 @@
     background: rgba(79, 140, 255, 0.08);
     border-color: #4f8cff;
     transform: translateY(-3px);
+}
+
+/*=========================================================
+         CANVAS CONTAINER & HOVER LOCKS (RIGHT SIDE)
+=========================================================*/
+.hero-right {
+    position: relative;
+    height: 550px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*=========================================================
+      ✨ GLOBAL FULL-SCREEN INTERACTIVE COSMIC CANVAS
+=========================================================*/
+#three-container {
+    position: fixed;        /* 🌟 FIXED: Keeps canvas pinned to browser view while scrolling */
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: -1;            /* 🌟 FIXED: Forces the stars completely behind ALL section contents */
+    pointer-events: auto;   /* Allows users to hover/move stars if your JS script tracks mouse movements */
+}
+.hero-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4f8cff, #ad7cff); 
+    box-shadow: 0 0 30px rgba(79, 140, 255, 0.5), 0 0 60px rgba(173, 124, 255, 0.3);
+    z-index: 5;
+}
+
+/*=========================================================
+            PLANET CARDS - CONTROLLED ABSOLUTE ORBITS
+=========================================================*/
+.planet-card {
+    position: absolute;
+    background: rgba(255, 255, 255, .75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 12px 16px;
+    box-shadow: var(--shadow-lg);
+    transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    z-index: 6;
+    width: max-content;
+}
+
+.planet-card:hover {
+    transform: translateY(-6px) scale(1.03);
+}
+
+.planet-card h4 {
+    margin: 0 0 2px 0;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.planet-card p {
+    font-size: .75rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* Stable placement zones mapped relative to the 500px container canvas */
+.cosmic { 
+    top: 40px; 
+    right: -10px; 
+}
+
+.movewise { 
+    bottom: 60px; 
+    right: 0px; 
+}
+
+.doughstory { 
+    left: -20px; 
+    top: 140px; 
+}
+
+.deathnote { 
+    left: 10px; 
+    bottom: 40px; 
+}
+
+/*=========================================================
+                    SCROLL INDICATOR
+=========================================================*/
+.scroll-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-light);
+    font-size: .9rem;
+}
+
+.scroll-indicator span {
+    width: 28px;
+    height: 46px;
+    border: 2px solid #d8dbe2;
+    border-radius: 999px;
+    position: relative;
+}
+
+.scroll-indicator span::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    animation: scrollMouse 2s infinite;
 }
 
 /*=========================================================
@@ -165,183 +310,115 @@
     50% { opacity: 0; }
 }
 
-
-/*=========================================================
-                        RIGHT (LOGO & THREEJS)
-=========================================================*/
-.hero-right {
-    position: relative;
-    height: 720px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#three-container {
-    position: absolute;
-    inset: 0;
-    border-radius: 40px;
-    z-index: 1;
-}
-
-/* Unified Logo Alignment to perfectly target center of the space canvas */
-.hero-logo {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px; /* slightly smaller for a core */
-    height: 80px;
-    border-radius: 50%;
-    /* Beautiful energetic gradient */
-    background: linear-gradient(135deg, #4f8cff, #ad7cff); 
-    box-shadow: 
-        0 0 40px rgba(79, 140, 255, 0.6),
-        0 0 80px rgba(173, 124, 255, 0.4);
-    z-index: 5;
-    animation: heroPulse 4s ease-in-out infinite;
-}
-
-/* Dashed Orbit Ring around the central logo node */
-.hero-logo::before {
-    content: "";
-    position: absolute;
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    border: 1px dashed rgba(91, 130, 255, .35);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    animation: rotateRing 35s linear infinite;
-    pointer-events: none;
-}
-
-.hero-logo span {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-/*=========================================================
-                    PLANET CARDS
-=========================================================*/
-.planet-card {
-    position: absolute;
-    background: rgba(255, 255, 255, .75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
-    padding: 18px 22px;
-    box-shadow: var(--shadow-lg);
-    transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    z-index: 6;
-}
-
-.planet-card:hover {
-    transform: translateY(-10px) scale(1.04);
-}
-
-.planet-card h4 {
-    margin-bottom: 4px;
-    color: var(--text-dark);
-}
-
-.planet-card p {
-    font-size: .9rem;
-    color: var(--text-light);
-    margin: 0;
-}
-
-/* CARD POSITIONS */
-.cosmic { top: 60px; right: 20px; }
-.movewise { bottom: 90px; right: 40px; }
-.doughstory { left: 20px; top: 180px; }
-.deathnote { left: 50px; bottom: 120px; }
-
-/*=========================================================
-                    SCROLL INDICATOR
-=========================================================*/
-.scroll-indicator {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--text-light);
-    font-size: .95rem;
-}
-
-.scroll-indicator span {
-    width: 32px;
-    height: 54px;
-    border: 2px solid #d8dbe2;
-    border-radius: 999px;
-    position: relative;
-}
-
-.scroll-indicator span::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 10px;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    animation: scrollMouse 2s infinite;
-}
-
-/*=========================================================
-                GLOBAL TIMELINE ANIMATIONS
-=========================================================*/
 @keyframes scrollMouse {
-    0% { opacity: 0; top: 10px; }
+    0% { opacity: 0; top: 8px; }
     40% { opacity: 1; }
-    100% { opacity: 0; top: 34px; }
+    100% { opacity: 0; top: 28px; }
 }
-
-@keyframes heroPulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        box-shadow: 0 0 40px rgba(91,130,255,.18), 0 15px 35px rgba(0,0,0,.08);
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.06);
-        box-shadow: 0 0 60px rgba(91,130,255,.35), 0 15px 35px rgba(0,0,0,.12);
-    }
-}
-
 
 /*=========================================================
-      🌟 NEW: EXPLICIT DARK THEME BLUEPRINT MODIFICATIONS
+                     DARK THEME
 =========================================================*/
 [data-theme="dark"] {
-    /* 1. Global Variable Variable Shifts */
-    --text-dark: #f3f4f6;   /* Forces title font to cleanly flip to bright off-white */
-    --text-light: #9ca3af;  /* Forces description paragraph to turn to soft legible silver */
+    --text-dark: #f3f4f6;   
+    --text-light: #9ca3af;  
+}
 
-    /* 2. Glassmorphic Card Swaps */
-    & .planet-card {
-        background: rgba(19, 27, 46, 0.8) !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+[data-theme="dark"] .planet-card {
+    background: rgba(19, 27, 46, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .secondary-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .secondary-btn:hover {
+    background: rgba(79, 140, 255, 0.15);
+    border-color: #4f8cff;
+}
+
+[data-theme="dark"] .scroll-indicator span {
+    border-color: #374151;
+}
+
+/*=========================================================
+            🖥️ TABLET DEVICES (Middle Screens)
+=========================================================*/
+@media (max-width: 1024px) {
+    #hero {
+        padding-top: 120px; 
+        min-height: auto;
     }
 
-    /* 3. Secondary Glass Button Inverse */
-    & .secondary-btn {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.15);
-        color: #f3f4f6;
+    .container.hero-wrapper {
+        grid-template-columns: 1fr; 
+        gap: 50px;
     }
 
-    & .secondary-btn:hover {
-        background: rgba(79, 140, 255, 0.15);
-        border-color: #4f8cff;
+    .hero-left {
+        align-items: center;
+        text-align: center;
     }
 
-    /* 4. Mouse Scroll Controller Wheel Boundary Mute */
-    & .scroll-indicator span {
-        border-color: #374151;
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-right {
+        height: 480px; 
+        max-width: 440px;
+        margin: 0 auto;
+    }
+
+    .cosmic { top: 20px; right: 0px; }
+    .movewise { bottom: 40px; right: 0px; }
+    .doughstory { left: 0px; top: 100px; }
+    .deathnote { left: 0px; bottom: 40px; }
+}
+
+/*=========================================================
+            📱 SMARTPHONES (Clean Viewport Stack)
+=========================================================*/
+@media (max-width: 768px) {
+    #hero {
+        padding-top: 90px;
+    }
+
+    .hero-title {
+        font-size: 2.1rem; 
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+        gap: 12px;
+        width: 100%;
+    }
+
+    .primary-btn, .secondary-btn {
+        width: 100%; 
+        justify-content: center;
+        padding: 14px 24px;
+    }
+
+    /* Clear interactive planet overlapping layout errors on small screens */
+    .hero-right,  .planet-card, .hero-logo {
+        display: none !important;
+    }
+
+    .scroll-indicator {
+        display: none;
     }
 }

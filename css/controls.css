@@ -108,23 +108,44 @@ html,
 /*=========================================================
                 RESPONSIVE MOBILE CONTROLS
 =========================================================*/
+/*=========================================================
+                RESPONSIVE MOBILE CONTROLS
+=========================================================*/
 @media (max-width: 768px) {
     .theme-toggle-btn {
-        bottom: 80px;
+        bottom: 82px;       /* Stacked cleanly right over the arrow */
         right: 20px;
-        width: 42px;
-        height: 42px;
-        font-size: 1rem;
+        width: 44px;        /* Consistent square bounding track box */
+        height: 44px;
+        padding: 0;         /* Clear desktop side padding to avoid layout compression */
+        border-radius: 50%; /* Clear --radius-round to force a pixel-perfect circular shape */
+        justify-content: center; /* Center the icon precisely inside the circle */
+    }
+
+    /* 🌟 FIX: Completely hide the text words on mobile so only the clean icon renders */
+    .theme-toggle-btn .theme-text-light,
+    .theme-toggle-btn .theme-text-dark {
+        display: none !important;
     }
     
     .scroll-top-btn {
         bottom: 20px;
         right: 20px;
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+    }
+
+    /* Keep icons inside both buttons perfectly sized */
+    .theme-toggle-btn svg,
+    .theme-toggle-btn i,
+    .scroll-top-btn svg,
+    .scroll-top-btn i {
+        font-size: 1.15rem;
+        width: 20px;
+        height: 20px;
     }
 }
-
 
 /*=========================================================
       🌟 NEW: EXPLICIT DARK THEME BLUEPRINT MODIFICATIONS

@@ -1,6 +1,9 @@
 /*=========================================================
                 NAVBAR ROOT CONTAINER
 =========================================================*/
+html {
+    scroll-behavior: smooth;
+}
 header {
     position: fixed;
     top: 24px;
@@ -10,6 +13,11 @@ header {
     display: flex;
     justify-content: center;
     pointer-events: none; /* Allows user to click behind the background dead space */
+}
+body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 
 /*=========================================================
@@ -220,15 +228,22 @@ header {
         padding: 30px;
         flex-direction: column;
         gap: 26px;
-        background: rgba(255, 255, 255, 0.96); /* Boosted contrast against backdrop layers */
+        
+        /* 🌟 MATCHES THE THEME: Deep navy glassmorphism with high blur */
+        background: rgba(19, 27, 46, 0.92) !important; 
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
+        
+        /* Thin neon/translucent border matching your dark navbar style */
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
         border-radius: 28px;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        
         opacity: 0;
         visibility: hidden;
         transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: auto !important; 
+        z-index: 2000 !important; 
     }
 
     .nav-links.active {
@@ -237,15 +252,41 @@ header {
         transform: translateX(-50%) translateY(0);
     }
 
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        list-style: none;
+    }
+
+    /* Clean white links that switch to your primary blue color on active/hover */
+    .nav-links a {
+        color: #f3f4f6 !important; 
+        display: block;
+        padding: 12px 0;
+        font-size: 1.05rem;
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #4F8CFF !important; /* Glows your theme blue color */
+    }
+
     .navbar .primary-btn {
         display: none;
     }
 
     .hamburger {
         display: flex;
+        z-index: 2001; 
+    }
+    .nav-links a::after {
+        display: none !important;
     }
 }
-
 /*=========================================================
             SMALL INTERACTION DEVICES
 =========================================================*/
@@ -299,9 +340,8 @@ header {
 
     /* 3. Mobile Navigation Drawer Popover Dark Mode styling */
     & .nav-links {
-        /*background: rgba(19, 27, 46, 0.96) !important;*/
-        /*border: 1px solid rgba(255, 255, 255, 0.15) !important;*/
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5) !important;
+        background: #0b0f19 !important; 
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
 
     /* 4. Hamburger Lines Indicator Glow */
