@@ -114,6 +114,63 @@ const masterPortfolioDatabase = {
             ]
         }
     ],
+    "tracemate": [
+        {
+            title: "Splash Interface",
+            desc: "A minimal loading portal introducing the core system parameters, configuring state structures, and confirming file accessibility bounds.",
+            img: "../assets/images/tracemate.jpeg",
+            bullets: [
+                "Clean minimalist identity branding",
+                "Optimized asynchronous service instantiation",
+                "Fluid navigation handshakes",
+                "Prepares environment context structures"
+            ]
+        },
+        {
+            title: "Dashboard Central",
+            desc: "Core user dashboard presenting instant photo conversion pathways, user workspace entry points, and quick access utilities.",
+            img: "../assets/images/tracemate_home.jpeg",
+            bullets: [
+                "Intuitive modular navigation grid layout",
+                "Streamlined media asset upload pipeline",
+                "Quick action triggers for drawing canvas tools",
+                "Responsive layout optimized for multiple viewports"
+            ]
+        },
+        {
+            title: "Sketch Engine",
+            desc: "Image processing node translating standard graphics into varying forms of line-art and stencil configurations.",
+            img: "../assets/images/sketch_mode.jpeg",
+            bullets: [
+                "Real-time canvas render parameters",
+                "Four unique artistic matrix filter configurations",
+                "Instant cross-platform render pipelines",
+                "Granular adjustment controls for fine details"
+            ]
+        },
+        {
+            title: "Tracing Control Panel",
+            desc: "Interactive artist environment equipped with lock layers, transparency controls, and coordinate grid mappings.",
+            img: "../assets/images/tracemode.jpeg",
+            bullets: [
+                "Complete screen-lock tracing mechanics",
+                "Fluid opacity sliders for stencil alignment",
+                "Proportional matrix grid overlays (3x3, 5x5, 10x10)",
+                "Hardware viewport stability preservation"
+            ]
+        },
+        {
+            title: "History Logs",
+            desc: "Persistent user library tracking previously completed transitions, original image references, and filter preferences.",
+            img: "../assets/images/history.jpeg",
+            bullets: [
+                "Robust localized Hive/SQL storage stack",
+                "Quick removal hooks and deletion orchestrators",
+                "Project identification timestamp indexing",
+                "Instant single-tap workspace restore states"
+            ]
+        }
+    ],
     cosmicspace: [
         {
             title: "Futuristic Portal",
