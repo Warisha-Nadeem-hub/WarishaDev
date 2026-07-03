@@ -178,6 +178,97 @@ const masterPortfolioDatabase = {
             img: "../assets/images/cosmic_portal.png",
             bullets: ["Sci-fi neon overlay mesh vector graphics", "3D planet position tracking matrices metrics", "Animated interactive telescope zoom widgets", "Advanced particle systems backdrop integrations"]
         }
+    ],
+    "prepnest_ai": [
+        {
+            title: "Splash & Welcome Portal",
+            desc: "A warm onboarding entry introducing the study assistant with custom asset handling configurations.",
+            img: "../assets/images/prepnest_splash.jpeg", 
+            bullets: [
+                "Modern Material 3 UI identity configuration",
+                "Warm branding welcoming framework",
+                "Asynchronous asset status evaluations",
+                "Clean viewport loading initialization sequence"
+            ]
+        },
+    
+        {
+            title: "Dynamic AI Workspace",
+            desc: "Core user hub offering 2–3 minute bite-sized daily flashcards optimized for high-retention technical study.",
+            img: "../assets/images/prepnest_home.jpeg",
+            bullets: [
+                "Automated text token streaming integrations",
+                "Interactive single-tap canvas expansion nodes",
+                "Instant single-action verification mechanics",
+                "Flexible layout support built on Riverpod state management"
+            ]
+        },
+        {
+            title: "Expanded Flashcard View",
+            desc: "The deep-dive review screen displaying structured engineering summaries, interactive sample interview questions, and practical tips.",
+            img: "../assets/images/prep.jpeg", 
+            bullets: [
+                "High-impact key points structured for microlearning retention",
+                "Interactive 'Show Answer' components for active recall testing",
+                "Contextual engineering tips to guide runtime architectural thought",
+                "Clean typography configurations tailored for long-form readability"
+            ]
+        },
+        {
+            title: "Offline Vault System",
+            desc: "Robust local notebook node running on lightweight Hive structures allowing single-tap note capture.",
+            img: "../assets/images/notes.jpeg",
+            bullets: [
+                "Zero-latency Hive local data engine pipeline",
+                "Interactive content mutation workflows",
+                "Localized storage encryption models",
+                "Cached fallback layer for system offline stability"
+            ]
+        },
+        {
+            title: "Intelligent Scheduler Node",
+            desc: "Custom notification hub providing granular preference inputs to establish recurring study patterns.",
+            img: "../assets/images/reminder.jpeg",
+            bullets: [
+                "Local hardware system background registration",
+                "Granular recurring task time mappings",
+                "Optimized state retention across reboots",
+                "Frictionless utility parameters for target engagement"
+            ]
+        },
+        {
+            title: "Profile Screen & Progress Dashboard",
+            desc: "Gamified progress dashboard mapping persistent usage performance and tracking streaks.",
+            img: "../assets/images/profile.jpeg",
+            bullets: [
+                "Mathematical performance indicator matrices",
+                "Persistent milestone counter pipelines",
+                "Comprehensive learning profile detail maps",
+                "Seamless system operational flag controls"
+            ]
+        },
+        {
+            title: "Light Profile & Progress Dashboard",
+            desc: "The gamified analytical dashboard rendering persistent streaks and usage metrics in an elegant light interface.",
+            img: "../assets/images/L_profile.jpeg", 
+            bullets: [
+                "High-contrast presentation of learning analytics and daily counters",
+                "Clean white cards with crisp dark slate data points and typography",
+                "Vibrant metric indicators and progress tracking visualizations",
+                "Maintains clean structural parity with dark mode control nodes"
+            ]
+        },
+        {
+            title: "Material 3 Ambient Light Theme",
+            desc: "A clean, high-contrast light presentation designed to optimize readability during daytime study intervals.",
+            img: "../assets/images/L_home.jpeg", 
+            bullets: [
+                "Strict adherence to Material 3 light color specification models",
+                "Subtle surface container elevation mapping for clear separation",
+                "Deep indigo typography rendering to counter visual fatigue",
+                "Dynamically tinted background cards using primary brand hues"
+            ]
+        },
     ]
 };
 
