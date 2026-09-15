@@ -68,8 +68,8 @@ section {
 
 .logo {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
-    font-size: 1.4rem;
+    font-weight: 700;
+    font-size: 1.0rem;
     text-decoration: none;
     color: var(--prj-text);
     white-space: nowrap;
@@ -77,7 +77,7 @@ section {
 
 .navbar-project-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 0.95rem;
     color: var(--prj-muted);
     padding-left: 12px;

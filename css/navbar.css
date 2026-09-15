@@ -4,16 +4,18 @@
 html {
     scroll-behavior: smooth;
 }
+
 header {
     position: fixed;
     top: 24px;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Keeps navbar sitting visually on top of everything */
+    z-index: 1000;
     display: flex;
     justify-content: center;
-    pointer-events: none; /* Allows user to click behind the background dead space */
+    pointer-events: none;
 }
+
 body.menu-open {
     overflow: hidden;
     position: fixed;
@@ -29,43 +31,42 @@ body.menu-open {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px; /* Slightly widened padding for better visual weight */
+    padding: 0 24px;
     background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 999px;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); /* Faster fluid response curves */
-    pointer-events: auto; /* CRITICAL: Forces links and buttons inside the capsule to be clickable */
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
 }
 
 /*=========================================================
-      🌟 BRAND GROUPING (FIXES THE COMPONENT ALIGNMENT)
+                BRAND / LOGO
 =========================================================*/
 .nav-brand-group {
     display: flex;
     align-items: center;
-    gap: 16px; /* Spacing between the logo and back button */
+    gap: 16px;
 }
 
-/*=========================================================
-                    LOGO METRIC
-=========================================================*/
 .logo {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     background: var(--primary-color, #4F8CFF);
-    color: white !important;
+    color: #ffffff !important;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.05rem;
     font-weight: 700;
     text-decoration: none;
-    transition: 0.3s ease;
+    line-height: 1;
+    transition: transform 0.3s ease;
 }
 
 .logo:hover {
@@ -73,41 +74,20 @@ body.menu-open {
 }
 
 /*=========================================================
-            🌟 THE BACK TO PORTFOLIO PILL LINK
-=========================================================*/
-.back-portfolio-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 16px;
-    background: rgba(79, 140, 255, 0.08);
-    border: 1px solid rgba(79, 140, 255, 0.15);
-    border-radius: 999px;
-    color: #4F8CFF !important;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 0.88rem;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-}
-
-.back-portfolio-btn:hover {
-    background: rgba(79, 140, 255, 0.16);
-    transform: translateX(-3px);
-}
-
-/*=========================================================
-                NAVIGATION LINKS
+                DESKTOP NAVIGATION LINKS
 =========================================================*/
 .nav-links {
     display: flex;
     align-items: center;
     gap: 36px;
-    pointer-events: auto; /* Extra layer check to guarantee visibility validation */
     list-style: none;
     margin: 0;
     padding: 0;
+    background: transparent !important; /* Removes black rectangle background */
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
 }
 
 .nav-links li {
@@ -115,17 +95,14 @@ body.menu-open {
 }
 
 .nav-links a {
-    font-size: .97rem;
+    font-size: 0.97rem;
     font-weight: 600;
     color: var(--text-dark, #111827);
-    transition: .3s;
+    transition: color 0.3s ease;
     position: relative;
     text-decoration: none;
 }
 
-/*=========================================================
-                HOVER LINE ANIMATIONS
-=========================================================*/
 .nav-links a::after {
     content: "";
     position: absolute;
@@ -135,11 +112,12 @@ body.menu-open {
     height: 3px;
     border-radius: 999px;
     background: var(--primary-color, #4F8CFF);
-    transition: .35s ease;
+    transition: width 0.35s ease;
     transform: translateX(-50%);
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--primary-color, #4F8CFF);
 }
 
@@ -148,21 +126,14 @@ body.menu-open {
     width: 100%;
 }
 
-.nav-links a.active {
-    color: var(--primary-color, #4F8CFF);
-}
-
 /*=========================================================
-                CTA CALL TO ACTION BUTTON
+                CTA & HAMBURGER
 =========================================================*/
 .navbar .primary-btn {
     padding: 13px 24px;
-    font-size: .95rem;
+    font-size: 0.95rem;
 }
 
-/*=========================================================
-                HAMBURGER UTILITY BUTTON
-=========================================================*/
 .hamburger {
     width: 46px;
     height: 46px;
@@ -173,8 +144,7 @@ body.menu-open {
     gap: 6px;
     cursor: pointer;
     border-radius: 50%;
-    transition: .3s;
-    pointer-events: auto; /* Forces icon to always stay active */
+    transition: 0.3s;
 }
 
 .hamburger:hover {
@@ -186,12 +156,9 @@ body.menu-open {
     height: 2px;
     border-radius: 999px;
     background: var(--text-dark, #111827);
-    transition: .35s ease;
+    transition: 0.35s ease;
 }
 
-/*=========================================================
-            HAMBURGER VECTOR MOTION PATHS
-=========================================================*/
 .hamburger.active span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -204,15 +171,10 @@ body.menu-open {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/*=========================================================
-                NAVBAR SCROLLED STATE
-=========================================================*/
 .navbar.scrolled {
     height: 66px;
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
     background: rgba(255, 255, 255, 0.88);
-    border-color: rgba(255, 255, 255, 0.7);
-    pointer-events: auto; 
 }
 
 /*=========================================================
@@ -221,29 +183,23 @@ body.menu-open {
 @media (max-width: 992px) {
     .nav-links {
         position: fixed;
-        top: 90px; 
+        top: 90px;
         left: 50%;
         transform: translateX(-50%) translateY(-20px);
         width: min(92%, 420px);
         padding: 30px;
         flex-direction: column;
         gap: 26px;
-        
-        /* 🌟 MATCHES THE THEME: Deep navy glassmorphism with high blur */
-        background: rgba(19, 27, 46, 0.92) !important; 
+        background: rgba(19, 27, 46, 0.95) !important;
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
-        
-        /* Thin neon/translucent border matching your dark navbar style */
         border: 1px solid rgba(255, 255, 255, 0.12) !important;
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
         border-radius: 28px;
-        
         opacity: 0;
         visibility: hidden;
         transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        pointer-events: auto !important; 
-        z-index: 2000 !important; 
+        z-index: 2000;
     }
 
     .nav-links.active {
@@ -255,24 +211,16 @@ body.menu-open {
     .nav-links li {
         width: 100%;
         text-align: center;
-        list-style: none;
     }
 
-    /* Clean white links that switch to your primary blue color on active/hover */
     .nav-links a {
-        color: #f3f4f6 !important; 
+        color: #f3f4f6 !important;
         display: block;
         padding: 12px 0;
-        font-size: 1.05rem;
-        font-family: 'Space Grotesk', sans-serif;
-        font-weight: 600;
-        text-decoration: none;
-        transition: color 0.2s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-        color: #4F8CFF !important; /* Glows your theme blue color */
+    .nav-links a::after {
+        display: none !important;
     }
 
     .navbar .primary-btn {
@@ -281,75 +229,22 @@ body.menu-open {
 
     .hamburger {
         display: flex;
-        z-index: 2001; 
-    }
-    .nav-links a::after {
-        display: none !important;
-    }
-}
-/*=========================================================
-            SMALL INTERACTION DEVICES
-=========================================================*/
-@media (max-width: 480px) {
-    header {
-        top: 16px; /* Moves closer to top border mesh on tiny viewport layouts */
-    }
-    .navbar {
-        height: 64px;
-        padding: 0 16px;
-    }
-    .logo {
-        width: 42px;
-        height: 42px;
-        font-size: 1.15rem;
-    }
-    .back-portfolio-btn {
-        padding: 6px 10px;
-        font-size: 0.75rem;
-    }
-    .nav-links {
-        top: 76px; /* Matches the tighter alignment grid specs */
+        z-index: 2001;
     }
 }
 
 /*=========================================================
-        🌟 FIXED: EXPLICIT DARK THEME BLUEPRINT MODIFICATIONS
+                DARK THEME OVERRIDES
 =========================================================*/
-[data-theme="dark"] {
-    /* 1. Main Floating Capsule Dark Glass Morphing */
-    & .navbar {
-        background: rgba(19, 27, 46, 0.72) !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
-    }
+[data-theme="dark"] .navbar {
+    background: rgba(19, 27, 46, 0.72) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
 
-    /* Fix text illumination on links inside dark theme settings */
-    & .nav-links a {
-        color: #f3f4f6 !important;
-    }
-    & .nav-links a:hover {
-        color: #4F8CFF !important;
-    }
+[data-theme="dark"] .nav-links a {
+    color: #f3f4f6;
+}
 
-    /* 2. Scrolled Navbar State Inverse */
-    & .navbar.scrolled {
-        background: rgba(19, 27, 46, 0.88) !important;
-        border-color: rgba(255, 255, 255, 0.08) !important;
-        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
-    }
-
-    /* 3. Mobile Navigation Drawer Popover Dark Mode styling */
-    & .nav-links {
-        background: #0b0f19 !important; 
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    }
-
-    /* 4. Hamburger Lines Indicator Glow */
-    & .hamburger span {
-        background: #f3f4f6 !important;
-    }
-
-    & .hamburger:hover {
-        background: rgba(255, 255, 255, 0.06);
-    }
+[data-theme="dark"] .hamburger span {
+    background: #f3f4f6 !important;
 }
