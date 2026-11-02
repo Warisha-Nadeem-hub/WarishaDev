@@ -67,7 +67,7 @@ window.addEventListener("load", () => {
             SCROLL REVEAL
 =========================================================*/
 
-const observer = new IntersectionObserver((entries) => {
+const fadeUpObserver = new IntersectionObserver((entries) => {
 
     entries.forEach(entry => {
 
@@ -97,6 +97,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".fade-up").forEach(item => {
 
-    observer.observe(item);
+    fadeUpObserver.observe(item);
 
 });

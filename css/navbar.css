@@ -42,35 +42,68 @@ body.menu-open {
     pointer-events: auto;
 }
 
+.navbar.container {
+    width: min(92%, 1240px);
+    max-width: 1240px;
+    padding: 0 24px;
+}
+
 /*=========================================================
-                BRAND / LOGO
+                BRAND WORDMARK
 =========================================================*/
 .nav-brand-group {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
+    min-width: 0;
 }
 
-.logo {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: var(--primary-color, #4F8CFF);
-    color: #ffffff !important;
+.brand-link {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: inherit;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
     text-decoration: none;
-    line-height: 1;
-    transition: transform 0.3s ease;
+    letter-spacing: -0.035em;
+    white-space: nowrap;
 }
 
-.logo:hover {
-    transform: rotate(10deg) scale(1.05);
+.brand-surname {
+    margin-left: 0.25em;
+}
+
+.brand-link:hover {
+    color: var(--primary-color, #4F8CFF);
+}
+
+.brand-context {
+    padding-left: 12px;
+    border-left: 1px solid var(--border-color, #E5E7EB);
+    color: #6B7280;
+    font-size: 0.82rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.nav-return-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 8px 0;
+    color: var(--text-dark, #111827);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.nav-return-link:hover {
+    color: var(--primary-color, #4F8CFF);
 }
 
 /*=========================================================
@@ -227,9 +260,27 @@ body.menu-open {
         display: none;
     }
 
+    .navbar .nav-portfolio-link {
+        display: none;
+    }
+
+    .brand-context {
+        display: none;
+    }
+
     .hamburger {
         display: flex;
         z-index: 2001;
+    }
+
+    @media (max-width: 480px) {
+        .brand-surname {
+            display: none;
+        }
+
+        .navbar.container {
+            padding-inline: 18px;
+        }
     }
 }
 
@@ -243,6 +294,18 @@ body.menu-open {
 
 [data-theme="dark"] .nav-links a {
     color: #f3f4f6;
+}
+
+[data-theme="dark"] .brand-context {
+    color: #9CA3AF;
+}
+
+[data-theme="dark"] .nav-return-link {
+    color: #D1D5DB;
+}
+
+[data-theme="dark"] .nav-return-link:hover {
+    color: #B8D2FF;
 }
 
 [data-theme="dark"] .hamburger span {

@@ -9,6 +9,12 @@
     background: transparent;
 }
 
+[data-theme="dark"] .about-image-note {
+    background: rgba(19, 27, 46, 0.96);
+    border-color: rgba(140, 181, 255, 0.2);
+    color: #E5E7EB;
+}
+
 /* Global Section Heading Layout adjustments */
 .section-heading {
     margin-bottom: 60px;
@@ -24,10 +30,11 @@
 }
 
 .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.3;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.2;
     color: var(--text-dark, #1e2229);
     font-weight: 800;
+    letter-spacing: -0.035em;
 }
 
 /*=========================================================
@@ -52,6 +59,32 @@
 /* Image Container Frame styling */
 .about-image-wrapper {
     position: relative;
+}
+
+.about-image-note {
+    position: absolute;
+    right: -18px;
+    bottom: 34px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 15px;
+    border: 1px solid rgba(79, 140, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 30px rgba(31, 48, 78, 0.12);
+    color: #374151;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.about-image-note svg {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    color: var(--primary-color, #4F8CFF);
 }
 
 /* Soft color aura background element behind the profile image */
@@ -92,16 +125,16 @@
                         CONTENT & STATS
 =========================================================*/
 .about-content h3 {
-    font-size: 2.2rem;
-    margin-bottom: 24px;
+    font-size: clamp(1.7rem, 3vw, 2.1rem);
+    margin-bottom: 12px;
     font-weight: 700;
     color: var(--text-dark, #1e2229);
 }
 
 .about-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 0;
     color: var(--text-light, #6b7280);
     max-width: 650px;
 }
@@ -109,14 +142,14 @@
 /* Dynamic Statistics Layout Grid */
 .about-stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Upgraded from 2x2 to a premium 4-column row on Desktop */
-    gap: 20px;
-    margin: 40px 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 28px 0;
 }
 
 /* 🌟 REPAIRED: Clean, uniform Light Mode look for stat cards */
 .stat-card {
-    padding: 24px 16px;
+    padding: 18px 12px;
     border-radius: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     text-align: center;
@@ -133,7 +166,7 @@
 }
 
 .stat-card h2 {
-    font-size: 2.6rem;
+    font-size: 2rem;
     font-weight: 800;
     background: linear-gradient(135deg, #4f8cff, #ad7cff);
     -webkit-background-clip: text;
@@ -142,7 +175,7 @@
 }
 
 .stat-card p {
-    font-size: 0.9rem;
+    font-size: 0.78rem;
     font-weight: 600;
     color: var(--text-light, #6b7280);
     margin: 0;
@@ -161,6 +194,9 @@
         height: 460px;
         margin: 0 auto;
     }
+    .about-image-note {
+        right: max(calc((100vw - 400px) / 2 - 18px), 0px);
+    }
     .about-content {
         text-align: center;
     }
@@ -175,13 +211,35 @@
 
 @media (max-width: 550px) {
     .about-stats {
-        grid-template-columns: 1fr; /* Single column stack vertical list layout profiles on small mobile viewports */
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin: 24px 0;
     }
     .section-title {
         font-size: 1.8rem;
     }
     .about-content h3 {
         font-size: 1.6rem;
+    }
+    .about-image {
+        height: 400px;
+    }
+    .about-image-note {
+        right: 4px;
+        bottom: 22px;
+        gap: 6px;
+        padding: 9px 11px;
+        font-size: 0.72rem;
+    }
+    .stat-card {
+        padding: 14px 6px;
+        border-radius: 14px;
+    }
+    .stat-card h2 {
+        font-size: 1.65rem;
+    }
+    .stat-card p {
+        font-size: 0.68rem;
     }
 }
 
@@ -197,7 +255,7 @@
 }
 
 [data-theme="dark"] .stat-card:hover {
-    background: rgba(255, 255, 255, 0.05) !important;
+    background: #121826 !important;
     border-color: rgba(79, 140, 255, 0.4) !important;
 }
 

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#FAFBFC" />
+  <meta name="description" content="An evolving learning lab documenting experiments in AI automation, workflows, and practical problem-solving." />
+  <title>AI Learning Lab — Learning by Building</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/foundation.css" />
+  <link rel="stylesheet" href="../css/AI.css" />
+  <link rel="stylesheet" href="../css/navbar.css" />
+  <link rel="stylesheet" href="../css/controls.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header>
+    <nav class="navbar container" aria-label="Main navigation">
+      <div class="nav-brand-group">
+        <a href="../index.html" class="brand-link" aria-label="Warisha Nadeem"><span>Warisha</span><span class="brand-surname">Nadeem</span></a>
+        <span class="brand-context">AI Learning Lab</span>
+      </div>
+      <ul class="nav-links">
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#journey">Learning loop</a></li>
+      </ul>
+      <a class="nav-return-link nav-portfolio-link" href="../index.html">Main portfolio <span aria-hidden="true">↗</span></a>
+      <button class="hamburger" id="menuToggle" aria-label="Open navigation" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow pill-eyebrow"><span class="live-dot"></span> AI LEARNING LAB</div>
+        <h1>Curiosity, connected<br><em>to real workflows.</em></h1>
+        <p class="hero-description">I learn AI automation by building practical n8n projects for real problems.</p>
+        <div class="hero-actions"><a class="primary-btn" href="#projects">See what I’m building <span aria-hidden="true">↘</span></a></div>
+      </div>
+      <div class="hero-visual" aria-label="Friendly animated robot with n8n and AI tool markers">
+        <div class="orbit orbit-a"></div>
+        <div class="node node-n8n"><span class="node-icon">⌘</span><span>n8n</span></div>
+        <div class="node node-ai"><span class="node-icon">✳</span><span>AI tools</span></div>
+        <div class="robot-shadow"></div>
+        <div class="robot" id="heroRobot" role="img" aria-label="A friendly white robot with blue accents, waving hello">
+          <div class="antenna"><span></span></div>
+          <div class="robot-ear ear-left"></div><div class="robot-ear ear-right"></div>
+          <div class="robot-head"><div class="robot-glass"><span class="robot-eye eye-left"></span><span class="robot-eye eye-right"></span><span class="robot-cheek cheek-left"></span><span class="robot-cheek cheek-right"></span></div><div class="head-highlight"></div></div>
+          <div class="robot-neck"></div>
+          <div class="robot-body"><div class="body-light"></div><div class="chest-badge">AI</div><div class="body-seam"></div></div>
+          <div class="robot-arm arm-left"><div class="arm-joint"></div><div class="robot-hand"></div></div>
+          <div class="robot-arm arm-right"><div class="arm-joint"></div><div class="robot-hand"><i></i><i></i><i></i></div></div>
+          <div class="robot-leg leg-left"></div><div class="robot-leg leg-right"></div>
+        </div>
+        <div class="spark spark-one">✦</div><div class="spark spark-two">✳</div>
+        <div class="visual-caption"><span class="caption-line"></span> learning by building</div>
+      </div>
+    </section>
+
+    <section class="section-wrap journey-section" id="journey">
+      <div class="journey-heading"><div class="section-kicker"><span></span> LEARNING LOOP</div><h2>Problem to workflow to learning</h2></div>
+      <ol class="journey-steps" aria-label="My project learning process">
+        <li><span class="journey-step-mark">01</span><span>Find a problem</span></li>
+        <li><span class="journey-step-mark">02</span><span>Build a workflow</span></li>
+        <li><span class="journey-step-mark">03</span><span>Reflect and improve</span></li>
+      </ol>
+    </section>
+
+    <section class="section-wrap projects-section" id="projects">
+      <div class="section-heading project-heading">
+        <div><div class="section-kicker"><span></span> BUILT AND IMAGINED</div><h2>Projects</h2></div>
+        <div class="project-filters" role="group" aria-label="Filter projects"><button class="filter-button active" data-filter="all" aria-pressed="true">All <span>3</span></button><button class="filter-button" data-filter="completed" aria-pressed="false">Complete</button><button class="filter-button" data-filter="idea" aria-pressed="false">Ideas</button></div>
+      </div>
+      <div class="projects-grid" id="projectsGrid">
+        <button class="project-card" data-status="completed" data-image="../assets/images/project1.png" data-caption="n8n workflow for the AI voice interview coach" data-problem="Students can struggle to practice interviews that are relevant to a specific company and role." data-solution="An n8n AI agent uses company research and conversational context to support targeted mock-interview practice." data-note-one="The workflow starts from a webhook and gathers company context through HTTP requests and Tavily search." data-note-two="A Groq-powered AI Agent with Simple Memory prepares a response that can be returned or converted to a text file." aria-expanded="false" aria-controls="projectDetail">
+          <span class="project-card-top"><span class="project-icon"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4m-4 0h8"/></svg></span><span class="status status-completed">Complete</span></span>
+          <span class="project-title">AI Voice Interview Coach</span><span class="project-description">Company-aware mock interview practice, orchestrated in n8n.</span><span class="project-tags"><i>n8n</i><i>AI agent</i></span><span class="project-card-bottom"><span>View workflow</span><span class="card-arrow" aria-hidden="true">↘</span></span>
+        </button>
+        <button class="project-card" data-status="idea" data-problem="Freelance testers and small QA teams lose time organizing screenshots, reproducing bugs, and writing clear reports." data-solution="Plan an n8n assistant that structures test results into developer-ready bug reports, organizes evidence, and notifies the right people." data-caption="TraceMate concept" data-note-one="Define how test results and screenshots enter the workflow." data-note-two="Design a consistent bug-report format and developer handoff." aria-expanded="false" aria-controls="projectDetail">
+          <span class="project-card-top"><span class="project-icon"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M8 10h8M8 14h5m-5 3h8"/></svg></span><span class="status status-idea">Idea</span></span>
+          <span class="project-title">TraceMate</span><span class="project-description">Turn messy testing evidence into developer-ready bug reports.</span><span class="project-tags"><i>QA</i><i>n8n</i></span><span class="project-card-bottom"><span>Explore idea</span><span class="card-arrow" aria-hidden="true">↘</span></span>
+        </button>
+        <button class="project-card" data-status="idea" data-problem="University application requirements, deadlines, fees, and scholarship details are scattered across many websites." data-solution="Plan a personalized application checklist with verified source links, deadline tracking, and reminders." data-caption="ApplyPath concept" data-note-one="Keep every requirement and deadline connected to a verifiable source." data-note-two="Plan how to check for changed or outdated information before reminding users." aria-expanded="false" aria-controls="projectDetail">
+          <span class="project-card-top"><span class="project-icon"><svg viewBox="0 0 24 24"><path d="m8 12 2.5 2.5L16 9"/><path d="M19 12v7H5V5h9m1-2h4v4m-4-4-7 7"/></svg></span><span class="status status-idea">Idea</span></span>
+          <span class="project-title">ApplyPath</span><span class="project-description">Know what to do next in your university application.</span><span class="project-tags"><i>Planning</i><i>Research</i></span><span class="project-card-bottom"><span>Explore idea</span><span class="card-arrow" aria-hidden="true">↘</span></span>
+        </button>
+      </div>
+
+      <div class="project-detail" id="projectDetail" aria-live="polite" hidden>
+        <div class="detail-visual-column" id="detailVisual">
+          <div class="detail-visual-top"><span class="detail-overline"><span class="live-dot"></span> WORKFLOW SNAPSHOT</span><span class="image-zoom-hint">Click to enlarge ↗</span></div>
+          <button class="workflow-placeholder" id="workflowImageButton" aria-label="Enlarge completed workflow screenshot" type="button">
+            <img class="workflow-image" id="workflowCanvas" src="../assets/images/project1.png" alt="n8n workflow connecting a webhook, company research, an AI agent, and response and file outputs" />
+          </button>
+          <div class="visual-caption-row"><span id="workflowCaption">n8n workflow for the AI voice interview coach</span><span class="caption-dots"><i></i><i></i><i></i></span></div>
+        </div>
+        <div class="detail-copy-column">
+          <div class="detail-title-row"><div><div class="detail-overline">PROJECT DETAILS</div><h3 id="detailTitle">Choose a project</h3></div><button class="close-detail" id="closeDetail" aria-label="Collapse project details">×</button></div>
+          <div class="detail-meta"><span class="status status-completed" id="detailStatus">Complete</span><span class="detail-tags" id="detailTags"></span></div>
+          <p class="detail-intro" id="detailIntro">Select a project to see its goal and next step.</p>
+          <div class="detail-story"><div class="story-icon" aria-hidden="true">✳</div><div><h4>Goal</h4><p id="detailProblem"></p></div></div>
+          <div class="detail-story"><div class="story-icon" aria-hidden="true">↗</div><div><h4>Next step</h4><p id="detailSolution"></p></div></div>
+          <div class="detail-actions"><button class="secondary-btn" id="showNotes" aria-expanded="false" aria-controls="buildNotes"><span class="button-label">View project notes</span><span aria-hidden="true">↗</span></button></div>
+          <div class="build-notes" id="buildNotes" hidden><h4>Project notes</h4><ul id="notesList"></ul></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <button class="scroll-top-btn" id="scrollTop" aria-label="Scroll back to top" title="Scroll to top" type="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+  <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Theme Mode" title="Change Theme Mode" type="button">
+    <div class="theme-icon-wrapper">
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.72" x2="5.64" y2="18.30"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    </div>
+    <span class="theme-text-light">Light Mode</span>
+    <span class="theme-text-dark">Dark Mode</span>
+  </button>
+
+  <div class="image-modal" id="imageModal" role="dialog" aria-modal="true" aria-label="Workflow screenshot" hidden><button class="modal-close" id="modalClose" aria-label="Close enlarged workflow">×</button><div class="modal-content" id="modalContent"></div></div>
+  <script src="../js/AI.js"></script>
+</body>
+</html>

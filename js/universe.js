@@ -27,15 +27,22 @@ function initializeUniverse() {
         }
     });
 
-    // 4. Premium planet hover effects script handler
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && universeSection.classList.contains("revealed")) {
+            closeUniverseModal();
+        }
+    });
+
+    // Let each orbit be clicked through and pause it while its planet is targeted.
     const planets = document.querySelectorAll(".planet");
-    planets.forEach((planet) => {
-        planet.addEventListener("mouseenter", () => {
-            planet.style.boxShadow = "0 0 35px rgba(91,130,255,.6)";
-        });
-        planet.addEventListener("mouseleave", () => {
-            planet.style.boxShadow = "none";
-        });
+    planets.forEach(planet => {
+        const orbit = planet.closest(".orbit");
+        if (!orbit) return;
+
+        planet.addEventListener("pointerenter", () => orbit.classList.add("is-paused"));
+        planet.addEventListener("pointerleave", () => orbit.classList.remove("is-paused"));
+        planet.addEventListener("focus", () => orbit.classList.add("is-paused"));
+        planet.addEventListener("blur", () => orbit.classList.remove("is-paused"));
     });
 }
 initializeUniverse();

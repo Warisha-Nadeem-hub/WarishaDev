@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/universe.css">
     <link rel="stylesheet" href="css/controls.css">
+    <link rel="stylesheet" href="css/components.css">
 </head>
 
 
@@ -50,7 +51,7 @@
     <header>
         <nav class="navbar container">
         <div class="nav-brand-group">  
-            <a href="#" class="logo">WN.</a>
+            <a href="#hero" class="brand-link" aria-label="Warisha Nadeem"><span>Warisha</span><span class="brand-surname">Nadeem</span></a>
         </div> 
             <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
@@ -82,7 +83,7 @@
                 <h1 class="hero-title">
                     I am <span class="text-gradient">Warisha Nadeem</span>
                     <br>
-                    <span class="typing-text" data-words='["Develop Flutter Apps.", "AI/ML Integration.", "Stunning UI/UX.", "Smart Engineering."]'></span><span class="cursor">|</span>
+                    <span class="typing-text" data-words='["Develop Flutter Apps.", "AI/ML Integration.","Smart Engineering."]'></span><span class="cursor">|</span>
                 </h1>
 
                 <p class="hero-description">
@@ -94,9 +95,15 @@
                         <span>Explore My Universe</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
-                    <a href="#contact" class="secondary-btn">
-                        <span>Hire Me</span>
-                    </a>
+                    <div class="hero-secondary-actions">
+                        <a href="#contact" class="secondary-btn">
+                            <span>Hire Me</span>
+                        </a>
+                        <a href=".//projects/AI.html" class="secondary-btn ai-journey-btn">
+                            <span>AI Journey</span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="scroll-indicator">
@@ -135,23 +142,26 @@
         <div class="container">
             <div class="section-heading">
                 <p class="section-tagline">ABOUT ME</p>
-                <h2 class="section-title">Designing Smart Interfaces.<br>Engineering Intelligent Systems.</h2>
+                <h2 class="section-title">Building apps with curiosity.</h2>
             </div>
 
             <div class="about-grid">
                 <div class="about-image-wrapper">
+                    <div class="about-image-note" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 3.5v2m0 13v2m8.5-8.5h-2m-13 0h-2m14.01-6.01-1.42 1.42M7.91 16.09l-1.42 1.42m11.02 0-1.42-1.42M7.91 7.91 6.49 6.49" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+                        </svg>
+                        <span>Curiosity in, ideas out</span>
+                    </div>
                     <div class="about-image glass-panel">
                         <img src="assets/images/warisha.jpeg" alt="Warisha Nadeem Headshot">
                     </div>
                 </div>
 
                 <div class="about-content">
-                    <h3>Flutter & AI/ML Developer</h3>
-                    <p>
-                        I focus on building high-performance mobile applications using Flutter, designing modern UI layouts, and integrating custom Machine Learning workflows to build truly smart software.
-                    </p>
-                    <p>
-                         From designing sleek user interfaces to integrating intelligent AI-driven features into mobile applications, my goal is to build digital products that are both beautiful and smart.                    </p>
+                    <h3>Hi, I’m Warisha.</h3>
+                    <p>I enjoy turning ideas into thoughtful Flutter apps. I’m learning more about AI/ML and exploring practical ways to bring it into the things I build.</p>
 
                     <div class="about-stats">
                         <div class="stat-card glass-panel">
@@ -160,20 +170,16 @@
                         </div>
                         <div class="stat-card glass-panel">
                             <h2 class="counter" data-target="4">0</h2>
-                            <p>Years Tech Focus</p>
+                            <p>Years learning tech</p>
                         </div>
                         <div class="stat-card glass-panel">
                             <h2 class="counter" data-target="15">0</h2>
-                            <p>Frameworks</p>
-                        </div>
-                        <div class="stat-card glass-panel">
-                            <h2 class="counter" data-target="100">0</h2>
-                            <p>Precision %</p>
+                            <p>Tools explored</p>
                         </div>
                     </div>
 
-                    <a href="#contact" class="primary-btn">
-                        <span>Let's Build Together</span>
+                    <a href="#featured-projects" class="primary-btn">
+                        <span>View my projects</span>
                     </a>
                 </div>
             </div>
@@ -186,7 +192,7 @@
                 <p>EXPLORE</p>
                 <h2>Interactive Universe</h2>
                 <span class="universe-badge">
-                     🌌 Every planet represents an innovation. Hover to pause, click to explore.
+                     🌌  Choose a planet to explore a project.
                 </span>
                 <button id="close-universe-btn" class="close-universe-btn" title="Minimize Universe">
                     ✕ Close Universe
@@ -320,49 +326,30 @@
 
     <section id="contact">
         <div class="container">
-            <div class="contact-bg-glow"></div>
-            
-            <div class="contact-wrapper">
-                <div class="contact-left">
-                    <p class="contact-tagline">CONTACT</p>
-                    <h2 class="contact-title">Let's Build <br>Something Intelligent</h2>
-                    <p class="contact-desc">
-                        Looking to add smart, predictive features to a mobile app or build a high-performance cross-platform system using modern UI architectures? Let's connect.
-                    </p>
-
-                    <div class="resume-container">
-                        <a href="assets/cv.pdf" download="Warisha_Nadeem_Resume" class="resume-btn">
-                            <div class="resume-icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                            </div>
-                            <div class="resume-text">
-                                <span class="label">Download Resume</span>
-                                <span class="file-info">PDF Format • Flutter & AI/ML Specialist</span>
-                            </div>
-                        </a>
-                    </div>
+            <div class="contact-bg-glow" aria-hidden="true"></div>
+            <div class="contact-panel">
+                <div class="contact-decoration" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <rect x="5" y="8" width="22" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/>
+                        <path d="m7 11 9 7 9-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="contact-spark contact-spark-one">✦</span>
+                    <span class="contact-spark contact-spark-two">✧</span>
                 </div>
-
-                <div class="contact-right glass-card">
-                    <form id="portfolio-contact-form" onsubmit="event.preventDefault();">
-                        <div class="input-group">
-                            <input type="text" placeholder="Your Name" required>
-                            <span class="focus-line"></span>
-                        </div>
-                        <div class="input-group">
-                            <input type="email" placeholder="Your Email" required>
-                            <span class="focus-line"></span>
-                        </div>
-                        <div class="input-group">
-                            <textarea placeholder="Your Message" required></textarea>
-                            <span class="focus-line"></span>
-                        </div>
-                        <button type="submit" class="submit-glow-btn">
-                            <span>Send Message</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="send-icon"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                        </button>
-                    </form> 
-                </div>
+                <p class="contact-tagline">CONTACT</p>
+                <h2 class="contact-title">Let's build something useful.</h2>
+                <p class="contact-desc">Have a project in mind? I’d love to hear about it.</p>
+                <a class="primary-btn contact-resume" href="assets/cv.pdf" download="Warisha_Nadeem_Resume">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3v12m0 0 5-5m-5 5-5-5M5 19h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Download resume
+                </a>
+                <nav class="contact-socials" aria-label="More ways to connect">
+                    <a href="mailto:warishanadeem7860@gmail.com">Email <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/Warisha-Nadeem-hub" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                    <a href="https://www.linkedin.com/in/warisha-nadeem-123450366" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+                </nav>
             </div>
         </div>
     </section>
@@ -383,7 +370,6 @@
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script src="js/loader.js"></script>
@@ -393,7 +379,6 @@
     <script src="js/about.js"></script>
     <script src="js/projects.js"></script>   
     <script src="js/hero.js"></script>   
-    <script src="js/contact.js"></script>   
     <script src="js/universe.js"></script>   
     <script src="js/three-scene.js"></script>   
     <script src="js/main.js"></script>

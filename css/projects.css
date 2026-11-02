@@ -54,7 +54,6 @@
     0 10px 20px rgba(0,0,0,.03),
     inset 0 1px 0 rgba(255,255,255,.9);
     transition:.45s ease;
-    perspective:1200px;
 }
 
 .project-card-inner{
@@ -64,8 +63,6 @@
     align-items: flex-start;
     position:relative;
     z-index:2;
-    transform-style:preserve-3d;
-    transition:transform .25s ease;
 }
 
 .project-card::before{
@@ -88,6 +85,7 @@
     width: 50%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    z-index: 1;
     transform: skewX(-25deg);
     opacity: 0;
     transition: left 0.65s ease-in-out, opacity 0.3s;
@@ -210,7 +208,6 @@
     [data-theme="light"] .project-card h3 { color: #111827 !important; }
     [data-theme="light"] .project-card p { color: #4b5563 !important; }
 
-    .project-card-inner { transform-style: flat !important; transform: none !important; }
     .project-image { height: 180px; }
     .project-image img { padding: 12px; }
     .project-info h3 { font-size: 1.35rem; margin: 8px 0; }
@@ -256,7 +253,9 @@
         RESTORED: EXPLICIT DARK THEME BLUEPRINT OVERWRITES
 =========================================================*/
 [data-theme="dark"] #featured-projects { background: linear-gradient(180deg, #0A0E1A 0%, #0F1526 100%) !important; }
-[data-theme="dark"] .project-card { background: rgba(19, 27, 46, 0.75); border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4); }
+[data-theme="dark"] .project-card { background: #121826; border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4); }
+[data-theme="dark"] .project-card:hover { background: #121826; }
+[data-theme="dark"] .project-card::after { background: linear-gradient(90deg, transparent, rgba(140, 181, 255, 0.12), transparent); }
 [data-theme="dark"] .project-info h3 { color: #f3f4f6 !important; }
 [data-theme="dark"] .project-info p { color: #9ca3af !important; }
 [data-theme="dark"] .tech-stack span { background: rgba(255, 255, 255, 0.05) !important; border-color: rgba(255, 255, 255, 0.1) !important; color: #4f8cff !important; }

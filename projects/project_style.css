@@ -26,6 +26,13 @@
     --shine-gradient: linear-gradient(90deg, rgba(79, 140, 255, 0) 0%, rgba(79, 140, 255, 0.25) 50%, rgba(79, 140, 255, 0) 100%);
 }
 
+[data-theme="dark"] body {
+    background:
+        radial-gradient(ellipse at 12% 9%, rgba(79, 140, 255, 0.1), transparent 36%),
+        radial-gradient(ellipse at 88% 40%, rgba(118, 83, 214, 0.06), transparent 39%),
+        var(--prj-bg);
+}
+
 body {
     background: var(--prj-bg);
     color: var(--prj-text);
@@ -48,69 +55,6 @@ section {
 }
 
 /*=========================================================
-            NAVBAR INTEGRATION & ALIGNMENT FIX
-=========================================================*/
-.navbar.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    position: relative;
-    padding: 20px 24px;
-}
-
-.logo-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-}
-
-.logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 1.0rem;
-    text-decoration: none;
-    color: var(--prj-text);
-    white-space: nowrap;
-}
-
-.navbar-project-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--prj-muted);
-    padding-left: 12px;
-    border-left: 2px solid var(--prj-border);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.back-portfolio-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    color: var(--prj-accent);
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    padding: 8px 16px;
-    border-radius: 10px;
-    background: var(--prj-accent-bg);
-    margin: 0;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.back-portfolio-btn:hover {
-    transform: translateX(-4px);
-    background: rgba(79, 140, 255, 0.15);
-}
-
-/*=========================================================
           HERO CALL-TO-ACTION BUTTONS (DEMO / SOURCE)
 =========================================================*/
 .hero-cta-buttons {
@@ -121,49 +65,34 @@ section {
     margin-top: 24px;
 }
 
-.hero-cta-buttons .primary-btn,
-.hero-cta-buttons .secondary-btn {
+.button-unavailable {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 14px 28px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-decoration: none;
-    border-radius: 14px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 9px;
+    min-height: 44px;
+    padding: 11px 22px;
+    border: 1px solid var(--prj-border);
+    border-radius: 999px;
+    background: #EEF1F5;
+    color: #6B7280;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.2;
     white-space: nowrap;
-    cursor: pointer;
-    box-sizing: border-box;
+    cursor: not-allowed;
+    opacity: 0.82;
 }
 
-.hero-cta-buttons .primary-btn {
-    background: var(--prj-accent);
-    color: #FFFFFF !important;
-    border: 2px solid var(--prj-accent);
-    box-shadow: 0 10px 25px rgba(79, 140, 255, 0.25);
+.availability-icon {
+    font-size: 1.05rem;
+    line-height: 1;
 }
 
-.hero-cta-buttons .primary-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(79, 140, 255, 0.4);
-    background: #3b7be6;
-    border-color: #3b7be6;
-}
-
-.hero-cta-buttons .secondary-btn {
-    background: transparent;
-    color: var(--prj-text) !important;
-    border: 2px solid var(--prj-border);
-}
-
-.hero-cta-buttons .secondary-btn:hover {
-    transform: translateY(-2px);
-    background: var(--prj-surface);
-    border-color: var(--prj-accent);
-    color: var(--prj-accent) !important;
+[data-theme="dark"] .button-unavailable {
+    border-color: #263149;
+    background: #192233;
+    color: #9CA3AF;
 }
 
 /*=========================================================
@@ -895,9 +824,6 @@ button[class*="dark"],
         grid-template-columns: 1fr; 
         gap: 16px;
     }
-    .navbar-project-title { 
-        display: none; 
-    }
     .project-hero {
         padding: 100px 0 40px;
     }
@@ -914,21 +840,8 @@ button[class*="dark"],
         padding-bottom: 40px;
     }
     
-    .navbar.container {
-        padding: 12px 16px;
-    }
-    
     .container, section, main {
         padding: 0 16px;
-    }
-    
-    .logo {
-        font-size: 1.25rem;
-    }
-    
-    .back-portfolio-btn {
-        padding: 6px 12px;
-        font-size: 0.88rem;
     }
 
     .summary-capsule-row { 

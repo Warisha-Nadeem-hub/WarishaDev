@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
 =========================================================*/
 function initializePortfolio() {
     // initializeLoader(); // Commented or active depending on your architecture
-    initializeNavbar();
     initializeScrollEffects();
     initializeRevealAnimation();
     initializeHeroEffects();
@@ -137,13 +136,10 @@ function initializeHeroEffects() {
 =========================================================*/
 function initializeRevealAnimation() {
     const elements = document.querySelectorAll(
-        ".section-heading, .project-card, .about-grid, .contact-wrapper"
+        ".section-heading, .project-card, .about-grid, .contact-panel"
     );
 
     elements.forEach(item => {
         item.classList.add("fade-up");
     });
 }
-
-/* Dummy placeholder functions to protect standard initializers */
-function initializeNavbar() { /* Reserved for navbar script adjustments if needed */ }

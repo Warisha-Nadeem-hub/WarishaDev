@@ -2,36 +2,41 @@
           🌟 REPAIRED: FLOATING UNIVERSE POP-UP MODAL
 =========================================================*/
 #universe {
-    position: fixed; /* Fixes it completely over the screen viewport */
+    position: fixed;
     inset: 0;
-    width: 100vw;
+    box-sizing: border-box;
+    width: 100%;
     height: 100vh;
-    background: rgba(15, 23, 42, 0.4); /* Translucent premium dark tint backdrop mask */
+    height: 100dvh;
+    padding: 16px;
+    background: rgba(15, 23, 42, 0.4);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    z-index: 99999; /* Forces pop-up to sit directly above your header navbar */
-    display: none; 
+    z-index: 99999;
+    display: none;
     align-items: center;
     justify-content: center;
 }
 
-/* Dynamic display assignment flag handled via your updated JavaScript script */
 #universe.revealed {
-    display: flex; 
+    display: flex;
 }
 
 /* Center Content Structural Wrapper Box inside the modal pop-up window */
 #universe .container {
-    width: min(92%, 820px); /* 🌟 FIXED: Restricts wide layout bounding boxes so it looks like a card modal */
+    box-sizing: border-box;
+    width: min(92vw, 820px);
     background: #FFFFFF;
-    padding: 50px 40px;
+    padding: clamp(24px, 5vw, 50px) clamp(18px, 4vw, 40px);
     border-radius: 36px;
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-xl);
     text-align: center;
     position: relative;
-    max-height: 90vh; /* Prevents elements from breaking off desktop screen thresholds */
-    overflow-y: auto; /* 🌟 FIXED: Restores trackpad scrolling inside the popup card if contents overflow! */
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 /*=========================================================
@@ -78,9 +83,9 @@
 
 #solar-system {
     position: relative;
-    width: 520px; /* 🌟 FIXED: Scaled down perfectly to sit cleanly inside your 820px card wrapper */
-    height: 520px;
-    margin: 40px auto 0;
+    width: min(520px, 100%);
+    aspect-ratio: 1;
+    margin: clamp(18px, 4vw, 40px) auto 0;
 }
 
 /*=========================================================
@@ -130,22 +135,23 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: 1;
     border: 1px dashed rgba(79, 140, 255, 0.2);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     animation: spin linear infinite;
+    pointer-events: none;
 }
 
-/* Hovering over an orbit pauses its track animation for easy clicking */
-.orbit:hover {
+.orbit.is-paused,
+.orbit:focus-within {
     animation-play-state: paused;
 }
 
-/* 🌟 FIXED: Proportional orbit scale sizing to perfectly map the new layout container dimensions */
-.orbit-1 { width: 150px; height: 150px; animation-duration: 20s; }
-.orbit-2 { width: 260px; height: 260px; animation-duration: 28s; }
-.orbit-3 { width: 370px; height: 370px; animation-duration: 38s; }
-.orbit-4 { width: 480px; height: 480px; animation-duration: 48s; }
+.orbit-1 { width: 24%; height: 24%; animation-duration: 20s; animation-delay: 0s; }
+.orbit-2 { width: 42%; height: 42%; animation-duration: 28s; animation-delay: -7s; }
+.orbit-3 { width: 60%; height: 60%; animation-duration: 38s; animation-delay: -19s; }
+.orbit-4 { width: 78%; height: 78%; animation-duration: 48s; animation-delay: -36s; }
 
 /*=========================================================
                 PLANETS & COUNTER-ROTATION
@@ -161,6 +167,7 @@
     text-decoration: none;
     cursor: pointer;
     z-index: 5;
+    pointer-events: auto;
 }
 
 .planet-sphere {
@@ -190,13 +197,14 @@
 }
 
 /* Sync counter-spin durations exactly to parent orbits */
-.orbit-1 .planet-label { animation-duration: 20s; }
-.orbit-2 .planet-label { animation-duration: 28s; }
-.orbit-3 .planet-label { animation-duration: 38s; }
-.orbit-4 .planet-label { animation-duration: 48s; }
+.orbit-1 .planet-label { animation-duration: 20s; animation-delay: 0s; }
+.orbit-2 .planet-label { animation-duration: 28s; animation-delay: -7s; }
+.orbit-3 .planet-label { animation-duration: 38s; animation-delay: -19s; }
+.orbit-4 .planet-label { animation-duration: 48s; animation-delay: -36s; }
 
 /* Orbit pauses when hovering over a planet item */
-.orbit:hover .planet-label {
+.orbit.is-paused .planet-label,
+.orbit:focus-within .planet-label {
     animation-play-state: paused;
 }
 
@@ -210,6 +218,12 @@
     background: var(--surface-color);
     border-color: var(--primary-color);
     color: var(--primary-color);
+}
+
+.planet:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 5px;
+    border-radius: 12px;
 }
 
 /*=========================================================
@@ -243,12 +257,71 @@
 =========================================================*/
 @media (max-width: 900px) {
     #universe .container {
-        padding: 30px 20px;
+        border-radius: 28px;
     }
-    #solar-system {
-        width: 420px;
-        height: 420px;
+}
+
+@media (max-width: 480px) {
+    #universe {
+        padding: 10px;
     }
+
+    #universe .container {
+        width: 100%;
+        max-height: calc(100vh - 20px);
+        max-height: calc(100dvh - 20px);
+        padding: 24px 16px;
+        border-radius: 24px;
+    }
+
+    #universe .section-heading {
+        margin-bottom: 0;
+    }
+
+    #universe .section-heading h2 {
+        font-size: clamp(1.45rem, 7vw, 2rem);
+    }
+
+    .universe-badge {
+        max-width: 100%;
+        padding: 7px 12px;
+        font-size: 0.8rem;
+    }
+
+    .close-universe-btn {
+        margin-top: 16px;
+        padding: 10px 18px;
+    }
+
+    .sun {
+        width: clamp(54px, 18vw, 72px);
+        height: clamp(54px, 18vw, 72px);
+    }
+
+    .sun-logo {
+        font-size: 1.1rem;
+    }
+
+    .sun-pulse {
+        width: clamp(82px, 26vw, 104px);
+        height: clamp(82px, 26vw, 104px);
+    }
+
+    .planet-sphere {
+        width: clamp(34px, 12vw, 46px);
+        height: clamp(34px, 12vw, 46px);
+    }
+
+    .planet-label {
+        margin-top: 6px;
+        padding: 4px 8px;
+        font-size: clamp(0.58rem, 2.7vw, 0.72rem);
+    }
+
+    .orbit-1 { width: 55%; height: 55%; }
+    .orbit-2 { width: 59%; height: 59%; }
+    .orbit-3 { width: 63%; height: 63%; }
+    .orbit-4 { width: 67%; height: 67%; }
 }
 
 /*=========================================================
